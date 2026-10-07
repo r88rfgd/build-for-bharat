@@ -1,0 +1,163 @@
+{
+ "market": {
+  "postings": 15841,
+  "hard": 12809,
+  "soft": 673,
+  "hard_share": 0.9501,
+  "ratio": 19.03,
+  "top_hard": [
+   "analytics",
+   "sql",
+   "python",
+   "java",
+   "machine learning",
+   "data analysis"
+  ],
+  "top_soft": [
+   "analytical",
+   "customer service",
+   "problem solving",
+   "stakeholder management",
+   "communication",
+   "management"
+  ]
+ },
+ "junior": {
+  "n": 139,
+  "cv_accuracy": 0.783,
+  "features": [
+   {
+    "key": "story",
+    "label": "Storytelling and dashboards",
+    "importance": 0.2997,
+    "corr": 0.554,
+    "market_share": 0.0321,
+    "lift": 9.33
+   },
+   {
+    "key": "stats",
+    "label": "Maths and stats",
+    "importance": 0.2487,
+    "corr": 0.524,
+    "market_share": 0.0399,
+    "lift": 6.23
+   },
+   {
+    "key": "code",
+    "label": "Coding",
+    "importance": 0.1602,
+    "corr": 0.444,
+    "market_share": 0.2067,
+    "lift": 0.78
+   },
+   {
+    "key": "ai",
+    "label": "AI and ML",
+    "importance": 0.1484,
+    "corr": 0.405,
+    "market_share": 0.0545,
+    "lift": 2.72
+   },
+   {
+    "key": "bigdata",
+    "label": "Big data",
+    "importance": 0.143,
+    "corr": 0.112,
+    "market_share": 0.062,
+    "lift": 2.31
+   }
+  ]
+ },
+ "senior": {
+  "n": 161,
+  "cv_accuracy": 0.907,
+  "traits": [
+   {
+    "trait": "conscientiousness",
+    "r": 0.68,
+    "odds_ratio": 8.11
+   },
+   {
+    "trait": "openness",
+    "r": 0.671,
+    "odds_ratio": 7.72
+   },
+   {
+    "trait": "extraversion",
+    "r": 0.494,
+    "odds_ratio": 2.6
+   },
+   {
+    "trait": "agreeableness",
+    "r": 0.293,
+    "odds_ratio": 1.87
+   },
+   {
+    "trait": "neuroticism",
+    "r": -0.006,
+    "odds_ratio": 2.22
+   }
+  ]
+ },
+ "categories": {
+  "story": [
+   "communication",
+   "dashboards",
+   "power bi",
+   "presentation",
+   "reporting",
+   "stakeholder management",
+   "storytelling",
+   "tableau",
+   "visualization"
+  ],
+  "stats": [
+   "classification",
+   "clustering",
+   "forecasting",
+   "mathematics",
+   "predictive modeling",
+   "regression",
+   "statistics"
+  ],
+  "code": [
+   "api",
+   "c#",
+   "c++",
+   "git",
+   "java",
+   "javascript",
+   "linux",
+   "php",
+   "python",
+   "r",
+   "scala",
+   "sql"
+  ],
+  "ai": [
+   "ai",
+   "computer vision",
+   "deep learning",
+   "keras",
+   "machine learning",
+   "nlp",
+   "pytorch",
+   "scikit-learn",
+   "tensorflow"
+  ],
+  "bigdata": [
+   "aws",
+   "azure",
+   "big data",
+   "cloud",
+   "data engineering",
+   "data warehousing",
+   "etl",
+   "gcp",
+   "hadoop",
+   "hive",
+   "pyspark",
+   "spark"
+  ]
+ }
+}

@@ -1,0 +1,783 @@
+known_skill,study_next,connection_strength,co_occurrence_count,target_salary_lpa,target_role,category
+Analytics,Data Analysis,0.0702,61,8.0,Data Analyst,hard
+Data Analysis,Analytics,0.0702,61,12.5,Program Control Services,hard
+Analytics,Data Mining,0.0833,46,12.5,Data Scientist,hard
+Data Mining,Analytics,0.0833,46,12.5,Program Control Services,hard
+Analytics,SQL,0.1243,128,12.5,Data Analyst,hard
+SQL,Analytics,0.1243,128,12.5,Program Control Services,hard
+Data Analysis,Data Mining,0.2052,94,12.5,Data Scientist,hard
+Data Mining,Data Analysis,0.2052,94,8.0,Data Analyst,hard
+Data Analysis,SQL,0.1651,141,12.5,Data Analyst,hard
+SQL,Data Analysis,0.1651,141,8.0,Data Analyst,hard
+Data Mining,SQL,0.1235,67,12.5,Data Analyst,hard
+SQL,Data Mining,0.1235,67,12.5,Data Scientist,hard
+Java,Machine Learning,0.1044,78,12.5,Data Scientist,hard
+Machine Learning,Java,0.1044,78,12.5,Java Developer,hard
+Java,Python,0.2378,200,12.5,Data Scientist,hard
+Python,Java,0.2378,200,12.5,Java Developer,hard
+Java,R,0.0598,44,12.5,Data Scientist,hard
+R,Java,0.0598,44,12.5,Java Developer,hard
+Java,Scala,0.2513,87,12.5,Data Scientist,hard
+Scala,Java,0.2513,87,12.5,Java Developer,hard
+Java,SQL,0.1282,112,12.5,Data Analyst,hard
+SQL,Java,0.1282,112,12.5,Java Developer,hard
+Machine Learning,Python,0.4726,394,12.5,Data Scientist,hard
+Python,Machine Learning,0.4726,394,12.5,Data Scientist,hard
+Machine Learning,R,0.3946,288,12.5,Data Scientist,hard
+R,Machine Learning,0.3946,288,12.5,Data Scientist,hard
+Machine Learning,Scala,0.0961,33,12.5,Data Scientist,hard
+Scala,Machine Learning,0.0961,33,12.5,Data Scientist,hard
+Machine Learning,SQL,0.1455,126,12.5,Data Analyst,hard
+SQL,Machine Learning,0.1455,126,12.5,Data Scientist,hard
+Python,R,0.3519,289,12.5,Data Scientist,hard
+R,Python,0.3519,289,12.5,Data Scientist,hard
+Python,Scala,0.1709,66,12.5,Data Scientist,hard
+Scala,Python,0.1709,66,12.5,Data Scientist,hard
+Python,SQL,0.2094,204,12.5,Data Analyst,hard
+SQL,Python,0.2094,204,12.5,Data Scientist,hard
+R,Scala,0.0621,21,12.5,Data Scientist,hard
+Scala,R,0.0621,21,12.5,Data Scientist,hard
+R,SQL,0.2157,184,12.5,Data Analyst,hard
+SQL,R,0.2157,184,12.5,Data Scientist,hard
+Scala,SQL,0.1321,53,12.5,Data Analyst,hard
+SQL,Scala,0.1321,53,12.5,Data Scientist,hard
+Big Data,Hadoop,0.3447,108,12.5,Big Data Developer,hard
+Hadoop,Big Data,0.3447,108,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Java,0.1149,55,12.5,Java Developer,hard
+Java,Big Data,0.1149,55,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Spark,0.3481,106,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Big Data,0.3481,106,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Hadoop,Java,0.2128,105,12.5,Java Developer,hard
+Java,Hadoop,0.2128,105,12.5,Big Data Developer,hard
+Hadoop,Spark,0.5607,176,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Hadoop,0.5607,176,12.5,Big Data Developer,hard
+Java,Spark,0.2252,108,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Java,0.2252,108,12.5,Java Developer,hard
+Big Data,Data Modeling,0.1568,35,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Big Data,0.1568,35,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Analysis,Spark,0.0256,12,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Data Analysis,0.0256,12,8.0,Data Analyst,hard
+C++,Machine Learning,0.0723,31,12.5,Data Scientist,hard
+Machine Learning,C++,0.0723,31,12.5,Quantitative Analyst - Hft,hard
+Predictive Modeling,Statistics,0.0614,12,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Predictive Modeling,0.0614,12,12.5,Head - Analytics,hard
+JavaScript,Machine Learning,0.0248,16,12.5,Data Scientist,hard
+Machine Learning,JavaScript,0.0248,16,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Python,0.1158,84,12.5,Data Scientist,hard
+Python,JavaScript,0.1158,84,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+Machine Learning,Spark,0.101,48,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Machine Learning,0.101,48,12.5,Data Scientist,hard
+Python,Spark,0.1627,87,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Python,0.1627,87,12.5,Data Scientist,hard
+Java,PHP,0.1336,42,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+PHP,Java,0.1336,42,12.5,Java Developer,hard
+C++,Hadoop,0.0212,6,12.5,Big Data Developer,hard
+Hadoop,C++,0.0212,6,12.5,Quantitative Analyst - Hft,hard
+C++,Java,0.2128,92,12.5,Java Developer,hard
+Java,C++,0.2128,92,12.5,Quantitative Analyst - Hft,hard
+C++,Linux,0.1925,41,12.5,Aws Architect,hard
+Linux,C++,0.1925,41,12.5,Quantitative Analyst - Hft,hard
+Hadoop,Linux,0.0206,5,12.5,Aws Architect,hard
+Linux,Hadoop,0.0206,5,12.5,Big Data Developer,hard
+Java,Linux,0.0458,17,12.5,Aws Architect,hard
+Linux,Java,0.0458,17,12.5,Java Developer,hard
+Hadoop,MySQL,0.0703,19,12.5,Python Developer,hard
+MySQL,Hadoop,0.0703,19,12.5,Big Data Developer,hard
+Deep Learning,Machine Learning,0.3031,105,12.5,Data Scientist,hard
+Machine Learning,Deep Learning,0.3031,105,12.5,Data Scientist,hard
+Deep Learning,NLP,0.3015,49,12.5,Data Scientist,hard
+NLP,Deep Learning,0.3015,49,12.5,Data Scientist,hard
+Deep Learning,Python,0.2001,78,12.5,Data Scientist,hard
+Python,Deep Learning,0.2001,78,12.5,Data Scientist,hard
+Machine Learning,NLP,0.3108,108,12.5,Data Scientist,hard
+NLP,Machine Learning,0.3108,108,12.5,Data Scientist,hard
+NLP,Python,0.2251,88,12.5,Data Scientist,hard
+Python,NLP,0.2251,88,12.5,Data Scientist,hard
+Hive,SAS,0.0284,11,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Hive,0.0284,11,12.5,Technical Architect - Big Data Technologies,hard
+Hive,SQL,0.1236,57,12.5,Data Analyst,hard
+SQL,Hive,0.1236,57,12.5,Technical Architect - Big Data Technologies,hard
+SAS,SQL,0.186,158,12.5,Data Analyst,hard
+SQL,SAS,0.186,158,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+Clustering,Excel,0.0628,7,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Clustering,0.0628,7,20.0,Assistant Vice President - Acquisition Strategy - Analytics ,hard
+Clustering,SAS,0.0695,10,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Clustering,0.0695,10,20.0,Assistant Vice President - Acquisition Strategy - Analytics ,hard
+Data Mining,Excel,0.0821,29,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Data Mining,0.0821,29,12.5,Data Scientist,hard
+Data Mining,NLP,0.1332,29,12.5,Data Scientist,hard
+NLP,Data Mining,0.1332,29,12.5,Data Scientist,hard
+Data Mining,R,0.1858,85,12.5,Data Scientist,hard
+R,Data Mining,0.1858,85,12.5,Data Scientist,hard
+Data Mining,SAS,0.1076,49,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Data Mining,0.1076,49,12.5,Data Scientist,hard
+Excel,R,0.135,75,12.5,Data Scientist,hard
+R,Excel,0.135,75,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,SAS,0.1754,97,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Excel,0.1754,97,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,SQL,0.1442,95,12.5,Data Analyst,hard
+SQL,Excel,0.1442,95,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+NLP,R,0.0672,23,12.5,Data Scientist,hard
+R,NLP,0.0672,23,12.5,Data Scientist,hard
+NLP,SAS,0.0381,13,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,NLP,0.0381,13,12.5,Data Scientist,hard
+NLP,SQL,0.0394,16,12.5,Data Analyst,hard
+SQL,NLP,0.0394,16,12.5,Data Scientist,hard
+R,SAS,0.3897,279,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,R,0.3897,279,12.5,Data Scientist,hard
+Cloud,Java,0.0677,11,12.5,Java Developer,hard
+Java,Cloud,0.0677,11,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Java,JavaScript,0.2399,156,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Java,0.2399,156,12.5,Java Developer,hard
+Data Mining,Python,0.1378,72,12.5,Data Scientist,hard
+Python,Data Mining,0.1378,72,12.5,Data Scientist,hard
+Analytical,Problem Solving,0.0979,16,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Problem Solving,Analytical,0.0979,16,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+R,Statistics,0.1389,55,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,R,0.1389,55,12.5,Data Scientist,hard
+Data Warehousing,ETL,0.404,61,12.5,Informatica Business Analysts,hard
+ETL,Data Warehousing,0.404,61,12.5,Informatica Business Analysts,hard
+Data Warehousing,SQL,0.1391,54,12.5,Data Analyst,hard
+SQL,Data Warehousing,0.1391,54,12.5,Informatica Business Analysts,hard
+ETL,SQL,0.1372,54,12.5,Data Analyst,hard
+SQL,ETL,0.1372,54,12.5,Informatica Business Analysts,hard
+Git,JavaScript,0.196,41,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Git,0.196,41,8.0,Microsoft Fed Angular,hard
+Data Modeling,Data Warehousing,0.1983,31,12.5,Informatica Business Analysts,hard
+Data Warehousing,Data Modeling,0.1983,31,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,ETL,0.1704,27,12.5,Informatica Business Analysts,hard
+ETL,Data Modeling,0.1704,27,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+AI,Machine Learning,0.2177,54,12.5,Data Scientist,hard
+Machine Learning,AI,0.2177,54,20.0,Business Analyst,hard
+AI,Python,0.1039,29,12.5,Data Scientist,hard
+Python,AI,0.1039,29,20.0,Business Analyst,hard
+C++,Python,0.1721,83,12.5,Data Scientist,hard
+Python,C++,0.1721,83,12.5,Quantitative Analyst - Hft,hard
+Data Analysis,Excel,0.1798,100,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Data Analysis,0.1798,100,8.0,Data Analyst,hard
+Python,SAS,0.1308,107,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Python,0.1308,107,12.5,Data Scientist,hard
+Analytical,Forecasting,0.0657,15,12.5,Specialized Analytics Group Manager,hard
+Forecasting,Analytical,0.0657,15,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Predictive Modeling,R,0.2058,73,12.5,Data Scientist,hard
+R,Predictive Modeling,0.2058,73,12.5,Head - Analytics,hard
+Predictive Modeling,SAS,0.2293,81,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Predictive Modeling,0.2293,81,12.5,Head - Analytics,hard
+Hadoop,Hive,0.5836,152,12.5,Technical Architect - Big Data Technologies,hard
+Hive,Hadoop,0.5836,152,12.5,Big Data Developer,hard
+Big Data,Python,0.0955,51,12.5,Data Scientist,hard
+Python,Big Data,0.0955,51,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Scala,0.1865,41,12.5,Data Scientist,hard
+Scala,Big Data,0.1865,41,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Hadoop,Python,0.1326,73,12.5,Data Scientist,hard
+Python,Hadoop,0.1326,73,12.5,Big Data Developer,hard
+Hadoop,Scala,0.2868,65,12.5,Data Scientist,hard
+Scala,Hadoop,0.2868,65,12.5,Big Data Developer,hard
+Scala,Spark,0.4541,100,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Scala,0.4541,100,12.5,Data Scientist,hard
+Data Analysis,Data Modeling,0.0582,20,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Data Analysis,0.0582,20,8.0,Data Analyst,hard
+Data Analysis,Data Warehousing,0.0336,11,12.5,Informatica Business Analysts,hard
+Data Warehousing,Data Analysis,0.0336,11,8.0,Data Analyst,hard
+Data Analysis,ETL,0.0361,12,12.5,Informatica Business Analysts,hard
+ETL,Data Analysis,0.0361,12,8.0,Data Analyst,hard
+JavaScript,MySQL,0.1994,71,12.5,Python Developer,hard
+MySQL,JavaScript,0.1994,71,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+MySQL,Python,0.1803,83,12.5,Data Scientist,hard
+Python,MySQL,0.1803,83,12.5,Python Developer,hard
+MySQL,R,0.0273,11,12.5,Data Scientist,hard
+R,MySQL,0.0273,11,12.5,Python Developer,hard
+Hive,Spark,0.569,144,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Hive,0.569,144,12.5,Technical Architect - Big Data Technologies,hard
+AI,NLP,0.086,10,12.5,Data Scientist,hard
+NLP,AI,0.086,10,20.0,Business Analyst,hard
+C#,C++,0.1789,38,12.5,Quantitative Analyst - Hft,hard
+C++,C#,0.1789,38,12.5,Software Engineer,hard
+Analytical,Git,0.0353,5,8.0,Microsoft Fed Angular,hard
+Git,Analytical,0.0353,5,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Analytics,Forecasting,0.065,30,12.5,Specialized Analytics Group Manager,hard
+Forecasting,Analytics,0.065,30,12.5,Program Control Services,hard
+Analytics,Predictive Modeling,0.0981,42,12.5,Head - Analytics,hard
+Predictive Modeling,Analytics,0.0981,42,12.5,Program Control Services,hard
+Analytics,R,0.1382,120,12.5,Data Scientist,hard
+R,Analytics,0.1382,120,12.5,Program Control Services,hard
+Analytics,SAS,0.2487,215,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Analytics,0.2487,215,12.5,Program Control Services,hard
+Data Mining,Machine Learning,0.2541,118,12.5,Data Scientist,hard
+Machine Learning,Data Mining,0.2541,118,12.5,Data Scientist,hard
+Machine Learning,SAS,0.1183,86,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Machine Learning,0.1183,86,12.5,Data Scientist,hard
+Data Analysis,Python,0.0815,67,12.5,Data Scientist,hard
+Python,Data Analysis,0.0815,67,8.0,Data Analyst,hard
+Data Analysis,Predictive Modeling,0.0704,25,12.5,Head - Analytics,hard
+Predictive Modeling,Data Analysis,0.0704,25,8.0,Data Analyst,hard
+Data Analysis,R,0.0972,70,12.5,Data Scientist,hard
+R,Data Analysis,0.0972,70,8.0,Data Analyst,hard
+Data Mining,Predictive Modeling,0.0266,6,12.5,Head - Analytics,hard
+Predictive Modeling,Data Mining,0.0266,6,12.5,Data Scientist,hard
+Predictive Modeling,SQL,0.0475,20,12.5,Data Analyst,hard
+SQL,Predictive Modeling,0.0475,20,12.5,Head - Analytics,hard
+JavaScript,PHP,0.2877,78,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+PHP,JavaScript,0.2877,78,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+Analytics,Data Modeling,0.0362,15,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Analytics,0.0362,15,12.5,Program Control Services,hard
+Analytics,Python,0.1442,143,12.5,Data Scientist,hard
+Python,Analytics,0.1442,143,12.5,Program Control Services,hard
+Data Modeling,Python,0.0255,10,12.5,Data Scientist,hard
+Python,Data Modeling,0.0255,10,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Machine Learning,Predictive Modeling,0.0694,25,12.5,Head - Analytics,hard
+Predictive Modeling,Machine Learning,0.0694,25,12.5,Data Scientist,hard
+Power BI,Tableau,0.2517,33,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Power BI,0.2517,33,8.0,Analytics Manager,hard
+Analytics,C++,0.0392,20,12.5,Quantitative Analyst - Hft,hard
+C++,Analytics,0.0392,20,12.5,Program Control Services,hard
+Analytics,Java,0.0157,14,12.5,Java Developer,hard
+Java,Analytics,0.0157,14,12.5,Program Control Services,hard
+Big Data,Hive,0.2493,63,12.5,Technical Architect - Big Data Technologies,hard
+Hive,Big Data,0.2493,63,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Analytics,Machine Learning,0.1203,106,12.5,Data Scientist,hard
+Machine Learning,Analytics,0.1203,106,12.5,Program Control Services,hard
+Computer Vision,Deep Learning,0.3271,26,12.5,Data Scientist,hard
+Deep Learning,Computer Vision,0.3271,26,20.0,Machine Learning Researcher - Kpo,hard
+Computer Vision,NLP,0.1003,8,12.5,Data Scientist,hard
+NLP,Computer Vision,0.1003,8,20.0,Machine Learning Researcher - Kpo,hard
+Computer Vision,Python,0.068,13,12.5,Data Scientist,hard
+Python,Computer Vision,0.068,13,20.0,Machine Learning Researcher - Kpo,hard
+Analytical,Analytics,0.0559,29,12.5,Program Control Services,hard
+Analytics,Analytical,0.0559,29,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Data Analysis,Visualization,0.1186,34,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Data Analysis,0.1186,34,8.0,Data Analyst,hard
+Analytics,Big Data,0.0602,34,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Analytics,0.0602,34,12.5,Program Control Services,hard
+AI,Java,0.04,10,12.5,Java Developer,hard
+Java,AI,0.04,10,20.0,Business Analyst,hard
+Linux,SQL,0.0418,18,12.5,Data Analyst,hard
+SQL,Linux,0.0418,18,12.5,Aws Architect,hard
+C#,JavaScript,0.1252,40,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,C#,0.1252,40,12.5,Software Engineer,hard
+Numpy,Python,0.08,6,12.5,Data Scientist,hard
+Python,Numpy,0.08,6,14.0,Python Developer,hard
+PySpark,Python,0.073,5,12.5,Data Scientist,hard
+Python,PySpark,0.073,5,4.5,Python Developer,hard
+AWS,MongoDB,0.0883,9,12.5,Senior Backend Developer,hard
+MongoDB,AWS,0.0883,9,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+AWS,MySQL,0.0806,12,12.5,Python Developer,hard
+MySQL,AWS,0.0806,12,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+AWS,Python,0.122,37,12.5,Data Scientist,hard
+Python,AWS,0.122,37,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+MongoDB,MySQL,0.2778,43,12.5,Python Developer,hard
+MySQL,MongoDB,0.2778,43,12.5,Senior Backend Developer,hard
+MongoDB,PHP,0.1443,17,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+PHP,MongoDB,0.1443,17,12.5,Senior Backend Developer,hard
+MongoDB,Python,0.1491,47,12.5,Data Scientist,hard
+Python,MongoDB,0.1491,47,12.5,Senior Backend Developer,hard
+MySQL,PHP,0.2906,50,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+PHP,MySQL,0.2906,50,12.5,Python Developer,hard
+PHP,Python,0.0713,25,12.5,Data Scientist,hard
+Python,PHP,0.0713,25,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+C++,Data Mining,0.0223,6,12.5,Data Scientist,hard
+Data Mining,C++,0.0223,6,12.5,Quantitative Analyst - Hft,hard
+C++,NLP,0.0249,5,12.5,Data Scientist,hard
+NLP,C++,0.0249,5,12.5,Quantitative Analyst - Hft,hard
+C++,R,0.0379,16,12.5,Data Scientist,hard
+R,C++,0.0379,16,12.5,Quantitative Analyst - Hft,hard
+Reporting,SQL,0.0371,9,12.5,Data Analyst,hard
+SQL,Reporting,0.0371,9,4.5,Data Analyst,hard
+AWS,Big Data,0.0695,12,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,AWS,0.0695,12,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+AWS,Hadoop,0.045,8,12.5,Big Data Developer,hard
+Hadoop,AWS,0.045,8,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+NLP,Scala,0.0311,5,12.5,Data Scientist,hard
+Scala,NLP,0.0311,5,12.5,Data Scientist,hard
+AWS,Java,0.1067,29,12.5,Java Developer,hard
+Java,AWS,0.1067,29,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+AWS,Spark,0.0752,13,12.5,Technical Architect - Big Data Technologies,hard
+Spark,AWS,0.0752,13,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+AWS,SQL,0.0445,14,12.5,Data Analyst,hard
+SQL,AWS,0.0445,14,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Spark,SQL,0.1512,84,12.5,Data Analyst,hard
+SQL,Spark,0.1512,84,12.5,Technical Architect - Big Data Technologies,hard
+C#,Python,0.0266,11,12.5,Data Scientist,hard
+Python,C#,0.0266,11,12.5,Software Engineer,hard
+C++,Statistics,0.0215,5,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,C++,0.0215,5,12.5,Quantitative Analyst - Hft,hard
+Linux,Python,0.1352,56,12.5,Data Scientist,hard
+Python,Linux,0.1352,56,12.5,Aws Architect,hard
+Linux,SAS,0.0138,5,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Linux,0.0138,5,12.5,Aws Architect,hard
+Python,Statistics,0.0796,36,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Python,0.0796,36,12.5,Data Scientist,hard
+SAS,Statistics,0.1826,72,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,SAS,0.1826,72,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+Analytics,JavaScript,0.043,33,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Analytics,0.043,33,12.5,Program Control Services,hard
+Data Analysis,SAS,0.1074,77,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Data Analysis,0.1074,77,8.0,Data Analyst,hard
+Big Data,SQL,0.1298,72,12.5,Data Analyst,hard
+SQL,Big Data,0.1298,72,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+PostgreSQL,Python,0.0897,20,12.5,Data Scientist,hard
+Python,PostgreSQL,0.0897,20,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,SQL,0.0864,20,12.5,Data Analyst,hard
+SQL,PostgreSQL,0.0864,20,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+Computer Vision,Machine Learning,0.1235,21,12.5,Data Scientist,hard
+Machine Learning,Computer Vision,0.1235,21,20.0,Machine Learning Researcher - Kpo,hard
+API,Java,0.0288,5,12.5,Java Developer,hard
+Java,API,0.0288,5,8.0,Devops Architect - Continuous Integration (Ci),hard
+API,MySQL,0.0526,5,12.5,Python Developer,hard
+MySQL,API,0.0526,5,8.0,Devops Architect - Continuous Integration (Ci),hard
+Java,MySQL,0.1526,63,12.5,Python Developer,hard
+MySQL,Java,0.1526,63,12.5,Java Developer,hard
+Analytics,Scala,0.022,9,12.5,Data Scientist,hard
+Scala,Analytics,0.022,9,12.5,Program Control Services,hard
+AI,Analytics,0.0271,8,12.5,Program Control Services,hard
+Analytics,AI,0.0271,8,20.0,Business Analyst,hard
+Excel,Visualization,0.0904,20,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Excel,0.0904,20,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+SQL,Visualization,0.1325,45,12.5,Senior Consultant - Data Analytics,hard
+Visualization,SQL,0.1325,45,12.5,Data Analyst,hard
+C#,Java,0.0594,22,12.5,Java Developer,hard
+Java,C#,0.0594,22,12.5,Software Engineer,hard
+Analytics,Excel,0.0567,38,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Analytics,0.0567,38,12.5,Program Control Services,hard
+Hive,Scala,0.1751,32,12.5,Data Scientist,hard
+Scala,Hive,0.1751,32,12.5,Technical Architect - Big Data Technologies,hard
+Data Analysis,JavaScript,0.0142,9,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Data Analysis,0.0142,9,8.0,Data Analyst,hard
+Deep Learning,R,0.1172,40,12.5,Data Scientist,hard
+R,Deep Learning,0.1172,40,12.5,Data Scientist,hard
+Excel,Predictive Modeling,0.0219,6,12.5,Head - Analytics,hard
+Predictive Modeling,Excel,0.0219,6,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+AWS,Cloud,0.1537,9,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Cloud,AWS,0.1537,9,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Cloud,Python,0.0442,8,12.5,Data Scientist,hard
+Python,Cloud,0.0442,8,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+AI,Data Mining,0.045,7,12.5,Data Scientist,hard
+Data Mining,AI,0.045,7,20.0,Business Analyst,hard
+AI,Deep Learning,0.0517,6,12.5,Data Scientist,hard
+Deep Learning,AI,0.0517,6,20.0,Business Analyst,hard
+Machine Learning,TensorFlow,0.0821,5,37.5,Director - Analytics - Machine Learning - Kpo - Iit/Iim/Xlri,hard
+TensorFlow,Machine Learning,0.0821,5,12.5,Data Scientist,hard
+ETL,Power BI,0.1023,12,8.0,Analytics Manager,hard
+Power BI,ETL,0.1023,12,12.5,Informatica Business Analysts,hard
+ETL,Visualization,0.053,7,12.5,Senior Consultant - Data Analytics,hard
+Visualization,ETL,0.053,7,12.5,Informatica Business Analysts,hard
+Power BI,Visualization,0.0691,7,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Power BI,0.0691,7,8.0,Analytics Manager,hard
+Analytical,Data Analysis,0.0348,15,8.0,Data Analyst,hard
+Data Analysis,Analytical,0.0348,15,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Analytical,SQL,0.0412,21,12.5,Data Analyst,hard
+SQL,Analytical,0.0412,21,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Data Analysis,Java,0.0136,10,12.5,Java Developer,hard
+Java,Data Analysis,0.0136,10,8.0,Data Analyst,hard
+Data Analysis,PostgreSQL,0.0256,5,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,Data Analysis,0.0256,5,8.0,Data Analyst,hard
+Java,PostgreSQL,0.1,20,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,Java,0.1,20,12.5,Java Developer,hard
+JavaScript,PostgreSQL,0.1102,19,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,JavaScript,0.1102,19,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,SQL,0.0557,42,12.5,Data Analyst,hard
+SQL,JavaScript,0.0557,42,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+Git,Java,0.1031,25,12.5,Java Developer,hard
+Java,Git,0.1031,25,8.0,Microsoft Fed Angular,hard
+Big Data,SAS,0.0301,14,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Big Data,0.0301,14,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Hadoop,SAS,0.0271,13,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Hadoop,0.0271,13,12.5,Big Data Developer,hard
+Hadoop,SQL,0.1207,69,12.5,Data Analyst,hard
+SQL,Hadoop,0.1207,69,12.5,Big Data Developer,hard
+Linux,MySQL,0.0393,8,12.5,Python Developer,hard
+MySQL,Linux,0.0393,8,12.5,Aws Architect,hard
+Analytical,Data Modeling,0.0244,5,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Analytical,0.0244,5,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Analytics,Dashboards,0.0516,9,8.0,Salesforce Administrator - Testing & Support,hard
+Dashboards,Analytics,0.0516,9,12.5,Program Control Services,hard
+Analytics,Tableau,0.076,34,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Analytics,0.076,34,12.5,Program Control Services,hard
+Dashboards,Tableau,0.0806,6,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Dashboards,0.0806,6,8.0,Salesforce Administrator - Testing & Support,hard
+Python,Tableau,0.0567,24,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Python,0.0567,24,12.5,Data Scientist,hard
+R,Tableau,0.1079,40,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,R,0.1079,40,12.5,Data Scientist,hard
+SAS,Tableau,0.1003,37,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,SAS,0.1003,37,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+Power BI,R,0.0393,10,12.5,Data Scientist,hard
+R,Power BI,0.0393,10,8.0,Analytics Manager,hard
+ETL,Machine Learning,0.0208,7,12.5,Data Scientist,hard
+Machine Learning,ETL,0.0208,7,12.5,Informatica Business Analysts,hard
+ETL,Python,0.0317,12,12.5,Data Scientist,hard
+Python,ETL,0.0317,12,12.5,Informatica Business Analysts,hard
+Git,Python,0.0518,14,12.5,Data Scientist,hard
+Python,Git,0.0518,14,8.0,Microsoft Fed Angular,hard
+AWS,Linux,0.1269,17,12.5,Aws Architect,hard
+Linux,AWS,0.1269,17,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Hive,Java,0.1583,63,12.5,Java Developer,hard
+Java,Hive,0.1583,63,12.5,Technical Architect - Big Data Technologies,hard
+Big Data,C++,0.0219,6,12.5,Quantitative Analyst - Hft,hard
+C++,Big Data,0.0219,6,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Statistics,0.0311,8,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Big Data,0.0311,8,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+C++,SQL,0.0539,27,12.5,Data Analyst,hard
+SQL,C++,0.0539,27,12.5,Quantitative Analyst - Hft,hard
+Hadoop,Statistics,0.0226,6,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Hadoop,0.0226,6,12.5,Big Data Developer,hard
+Java,Statistics,0.0148,6,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Java,0.0148,6,12.5,Java Developer,hard
+SQL,Statistics,0.0788,37,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,SQL,0.0788,37,12.5,Data Analyst,hard
+Hadoop,MongoDB,0.0757,14,12.5,Senior Backend Developer,hard
+MongoDB,Hadoop,0.0757,14,12.5,Big Data Developer,hard
+Java,MongoDB,0.1415,40,12.5,Senior Backend Developer,hard
+MongoDB,Java,0.1415,40,12.5,Java Developer,hard
+Hive,Python,0.0856,38,12.5,Data Scientist,hard
+Python,Hive,0.0856,38,12.5,Technical Architect - Big Data Technologies,hard
+Data Modeling,Tableau,0.0339,6,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Data Modeling,0.0339,6,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Statistics,Tableau,0.0392,8,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Statistics,0.0392,8,12.5,Consultant - Data Analytics - Kpo,hard
+SAS,Visualization,0.021,6,12.5,Senior Consultant - Data Analytics,hard
+Visualization,SAS,0.021,6,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+Git,SQL,0.0178,5,12.5,Data Analyst,hard
+SQL,Git,0.0178,5,8.0,Microsoft Fed Angular,hard
+AWS,NLP,0.0554,7,12.5,Data Scientist,hard
+NLP,AWS,0.0554,7,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Java,NLP,0.0742,26,12.5,Data Scientist,hard
+NLP,Java,0.0742,26,12.5,Java Developer,hard
+Big Data,Data Analysis,0.0513,24,8.0,Data Analyst,hard
+Data Analysis,Big Data,0.0513,24,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Machine Learning,0.0653,31,12.5,Data Scientist,hard
+Machine Learning,Big Data,0.0653,31,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Analysis,Machine Learning,0.0725,53,12.5,Data Scientist,hard
+Machine Learning,Data Analysis,0.0725,53,8.0,Data Analyst,hard
+MongoDB,PostgreSQL,0.1601,12,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,MongoDB,0.1601,12,12.5,Senior Backend Developer,hard
+MySQL,PostgreSQL,0.2376,26,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,MySQL,0.2376,26,12.5,Python Developer,hard
+Data Mining,Data Modeling,0.0275,6,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Data Mining,0.0275,6,12.5,Data Scientist,hard
+MongoDB,Scala,0.1155,15,12.5,Data Scientist,hard
+Scala,MongoDB,0.1155,15,12.5,Senior Backend Developer,hard
+MongoDB,Spark,0.0834,15,12.5,Technical Architect - Big Data Technologies,hard
+Spark,MongoDB,0.0834,15,12.5,Senior Backend Developer,hard
+ETL,Hadoop,0.0405,9,12.5,Big Data Developer,hard
+Hadoop,ETL,0.0405,9,12.5,Informatica Business Analysts,hard
+Deep Learning,SQL,0.0198,8,12.5,Data Analyst,hard
+SQL,Deep Learning,0.0198,8,12.5,Data Scientist,hard
+Data Analysis,Hive,0.0283,11,12.5,Technical Architect - Big Data Technologies,hard
+Hive,Data Analysis,0.0283,11,8.0,Data Analyst,hard
+Data Analysis,Tableau,0.0835,31,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Data Analysis,0.0835,31,8.0,Data Analyst,hard
+Hive,Tableau,0.035,7,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Hive,0.035,7,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Tableau,0.029,7,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Spark,0.029,7,12.5,Technical Architect - Big Data Technologies,hard
+SQL,Tableau,0.1365,60,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,SQL,0.1365,60,12.5,Data Analyst,hard
+PHP,SQL,0.033,12,12.5,Data Analyst,hard
+SQL,PHP,0.033,12,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+Analytics,Statistics,0.0921,44,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Analytics,0.0921,44,12.5,Program Control Services,hard
+Data Mining,Statistics,0.1072,27,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Data Mining,0.1072,27,12.5,Data Scientist,hard
+Machine Learning,Statistics,0.0746,30,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Machine Learning,0.0746,30,12.5,Data Scientist,hard
+Excel,Machine Learning,0.0248,14,12.5,Data Scientist,hard
+Machine Learning,Excel,0.0248,14,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Python,0.0221,14,12.5,Data Scientist,hard
+Python,Excel,0.0221,14,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Data Mining,Java,0.0491,23,12.5,Java Developer,hard
+Java,Data Mining,0.0491,23,12.5,Data Scientist,hard
+C++,JavaScript,0.0402,15,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,C++,0.0402,15,12.5,Quantitative Analyst - Hft,hard
+C++,Scala,0.0554,11,12.5,Data Scientist,hard
+Scala,C++,0.0554,11,12.5,Quantitative Analyst - Hft,hard
+JavaScript,Scala,0.0201,6,12.5,Data Scientist,hard
+Scala,JavaScript,0.0201,6,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+Data Warehousing,Power BI,0.0864,10,8.0,Analytics Manager,hard
+Power BI,Data Warehousing,0.0864,10,12.5,Informatica Business Analysts,hard
+ETL,Tableau,0.0351,6,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,ETL,0.0351,6,12.5,Informatica Business Analysts,hard
+MySQL,SQL,0.0544,26,12.5,Data Analyst,hard
+SQL,MySQL,0.0544,26,12.5,Python Developer,hard
+Data Warehousing,Visualization,0.0384,5,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Data Warehousing,0.0384,5,12.5,Informatica Business Analysts,hard
+Analytics,Hadoop,0.0413,24,12.5,Big Data Developer,hard
+Hadoop,Analytics,0.0413,24,12.5,Program Control Services,hard
+Machine Learning,Tableau,0.0346,13,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Machine Learning,0.0346,13,12.5,Data Scientist,hard
+Forecasting,SAS,0.0394,15,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Forecasting,0.0394,15,12.5,Specialized Analytics Group Manager,hard
+Forecasting,SQL,0.0132,6,12.5,Data Analyst,hard
+SQL,Forecasting,0.0132,6,12.5,Specialized Analytics Group Manager,hard
+Analytical,Customer Service,0.0426,8,4.5,Tech Mahindra Is Hiring For Voice Process For Pune & Mumbai.,soft
+Customer Service,Analytical,0.0426,8,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Mathematics,Statistics,0.1155,8,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Mathematics,0.1155,8,10.2,Vp-Strategic Analytics,hard
+Big Data,MongoDB,0.0446,8,12.5,Senior Backend Developer,hard
+MongoDB,Big Data,0.0446,8,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Hive,MongoDB,0.0402,6,12.5,Senior Backend Developer,hard
+MongoDB,Hive,0.0402,6,12.5,Technical Architect - Big Data Technologies,hard
+Docker,Python,0.0443,9,12.5,Data Scientist,hard
+Python,Docker,0.0443,9,12.5,Devops Engineer - Ansible/Docker,hard
+API,Git,0.0895,5,8.0,Microsoft Fed Angular,hard
+Git,API,0.0895,5,8.0,Devops Architect - Continuous Integration (Ci),hard
+JavaScript,Linux,0.025,8,12.5,Aws Architect,hard
+Linux,JavaScript,0.025,8,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+AWS,Docker,0.1371,9,12.5,Devops Engineer - Ansible/Docker,hard
+Docker,AWS,0.1371,9,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Docker,Linux,0.1003,9,12.5,Aws Architect,hard
+Linux,Docker,0.1003,9,12.5,Devops Engineer - Ansible/Docker,hard
+Docker,MongoDB,0.1171,8,12.5,Senior Backend Developer,hard
+MongoDB,Docker,0.1171,8,12.5,Devops Engineer - Ansible/Docker,hard
+Docker,MySQL,0.0602,6,12.5,Python Developer,hard
+MySQL,Docker,0.0602,6,12.5,Devops Engineer - Ansible/Docker,hard
+Linux,MongoDB,0.0503,7,12.5,Senior Backend Developer,hard
+MongoDB,Linux,0.0503,7,12.5,Aws Architect,hard
+Tableau,Visualization,0.1423,21,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Tableau,0.1423,21,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+C#,MySQL,0.0345,7,12.5,Python Developer,hard
+MySQL,C#,0.0345,7,12.5,Software Engineer,hard
+C++,MySQL,0.0634,15,12.5,Python Developer,hard
+MySQL,C++,0.0634,15,12.5,Quantitative Analyst - Hft,hard
+API,JavaScript,0.0534,8,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,API,0.0534,8,8.0,Devops Architect - Continuous Integration (Ci),hard
+Predictive Modeling,Python,0.0444,18,12.5,Data Scientist,hard
+Python,Predictive Modeling,0.0444,18,12.5,Head - Analytics,hard
+Azure,C#,0.0876,9,12.5,Software Engineer,hard
+C#,Azure,0.0876,9,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+AWS,Azure,0.1724,13,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Azure,AWS,0.1724,13,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Azure,Java,0.0669,14,12.5,Java Developer,hard
+Java,Azure,0.0669,14,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Analytics,Regression,0.0709,10,12.5,Behavioural Scientist - Bfsi,hard
+Regression,Analytics,0.0709,10,12.5,Program Control Services,hard
+Analytics,Visualization,0.0347,12,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Analytics,0.0347,12,12.5,Program Control Services,hard
+Azure,Cloud,0.2219,10,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Cloud,Azure,0.2219,10,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Azure,Linux,0.0679,7,12.5,Aws Architect,hard
+Linux,Azure,0.0679,7,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Azure,Python,0.0686,16,12.5,Data Scientist,hard
+Python,Azure,0.0686,16,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Cloud,Linux,0.0625,5,12.5,Aws Architect,hard
+Linux,Cloud,0.0625,5,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Excel,Stakeholder Management,0.0413,7,20.0,Vice President - Analytics - Bank,soft
+Stakeholder Management,Excel,0.0413,7,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Machine Learning,Stakeholder Management,0.0539,12,20.0,Vice President - Analytics - Bank,soft
+Stakeholder Management,Machine Learning,0.0539,12,12.5,Data Scientist,hard
+R,Stakeholder Management,0.0592,13,20.0,Vice President - Analytics - Bank,soft
+Stakeholder Management,R,0.0592,13,12.5,Data Scientist,hard
+Azure,JavaScript,0.0776,14,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Azure,0.0776,14,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Data Analysis,Forecasting,0.0314,12,12.5,Specialized Analytics Group Manager,hard
+Forecasting,Data Analysis,0.0314,12,8.0,Data Analyst,hard
+Data Mining,Forecasting,0.0247,6,12.5,Specialized Analytics Group Manager,hard
+Forecasting,Data Mining,0.0247,6,12.5,Data Scientist,hard
+Data Mining,Spark,0.0336,10,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Data Mining,0.0336,10,12.5,Data Scientist,hard
+Hadoop,Machine Learning,0.092,45,12.5,Data Scientist,hard
+Machine Learning,Hadoop,0.092,45,12.5,Big Data Developer,hard
+Hadoop,R,0.1058,51,12.5,Data Scientist,hard
+R,Hadoop,0.1058,51,12.5,Big Data Developer,hard
+Machine Learning,MySQL,0.0293,12,12.5,Python Developer,hard
+MySQL,Machine Learning,0.0293,12,12.5,Data Scientist,hard
+MySQL,Spark,0.08,21,12.5,Technical Architect - Big Data Technologies,hard
+Spark,MySQL,0.08,21,12.5,Python Developer,hard
+R,Spark,0.079,37,12.5,Technical Architect - Big Data Technologies,hard
+Spark,R,0.079,37,12.5,Data Scientist,hard
+AWS,JavaScript,0.0426,10,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,AWS,0.0426,10,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Deep Learning,Stakeholder Management,0.0672,7,20.0,Vice President - Analytics - Bank,soft
+Stakeholder Management,Deep Learning,0.0672,7,12.5,Data Scientist,hard
+Python,Stakeholder Management,0.0279,7,20.0,Vice President - Analytics - Bank,soft
+Stakeholder Management,Python,0.0279,7,12.5,Data Scientist,hard
+AI,R,0.0696,17,12.5,Data Scientist,hard
+R,AI,0.0696,17,20.0,Business Analyst,hard
+Forecasting,Machine Learning,0.0206,8,12.5,Data Scientist,hard
+Machine Learning,Forecasting,0.0206,8,12.5,Specialized Analytics Group Manager,hard
+Forecasting,Python,0.0137,6,12.5,Data Scientist,hard
+Python,Forecasting,0.0137,6,12.5,Specialized Analytics Group Manager,hard
+Analytical,SAS,0.0584,25,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Analytical,0.0584,25,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+C++,Deep Learning,0.0649,13,12.5,Data Scientist,hard
+Deep Learning,C++,0.0649,13,12.5,Quantitative Analyst - Hft,hard
+C++,Spark,0.0291,8,12.5,Technical Architect - Big Data Technologies,hard
+Spark,C++,0.0291,8,12.5,Quantitative Analyst - Hft,hard
+Deep Learning,Java,0.0429,15,12.5,Java Developer,hard
+Java,Deep Learning,0.0429,15,12.5,Data Scientist,hard
+Deep Learning,Spark,0.0765,17,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Deep Learning,0.0765,17,12.5,Data Scientist,hard
+Analytics,Hive,0.0128,6,12.5,Technical Architect - Big Data Technologies,hard
+Hive,Analytics,0.0128,6,12.5,Program Control Services,hard
+Hive,R,0.0643,25,12.5,Data Scientist,hard
+R,Hive,0.0643,25,12.5,Technical Architect - Big Data Technologies,hard
+C#,SQL,0.0233,10,12.5,Data Analyst,hard
+SQL,C#,0.0233,10,12.5,Software Engineer,hard
+Analytical,JavaScript,0.0132,5,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Analytical,0.0132,5,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Analytical,Linux,0.0323,7,12.5,Aws Architect,hard
+Linux,Analytical,0.0323,7,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+API,Python,0.0258,5,12.5,Data Scientist,hard
+Python,API,0.0258,5,8.0,Devops Architect - Continuous Integration (Ci),hard
+Analytics,Linux,0.0274,12,12.5,Aws Architect,hard
+Linux,Analytics,0.0274,12,12.5,Program Control Services,hard
+Hive,Machine Learning,0.0431,17,12.5,Data Scientist,hard
+Machine Learning,Hive,0.0431,17,12.5,Technical Architect - Big Data Technologies,hard
+Analytics,ETL,0.0225,9,12.5,Informatica Business Analysts,hard
+ETL,Analytics,0.0225,9,12.5,Program Control Services,hard
+Excel,Tableau,0.0629,18,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Excel,0.0629,18,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Linux,Machine Learning,0.0136,5,12.5,Data Scientist,hard
+Machine Learning,Linux,0.0136,5,12.5,Aws Architect,hard
+Hive,JavaScript,0.0146,5,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Hive,0.0146,5,12.5,Technical Architect - Big Data Technologies,hard
+Big Data,R,0.0535,25,12.5,Data Scientist,hard
+R,Big Data,0.0535,25,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,Tableau,0.029,7,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Big Data,0.029,7,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Python,Visualization,0.055,18,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Python,0.055,18,12.5,Data Scientist,hard
+Analytics,Problem Solving,0.0333,11,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Problem Solving,Analytics,0.0333,11,12.5,Program Control Services,hard
+Problem Solving,SAS,0.0734,20,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Problem Solving,0.0734,20,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Data Modeling,SQL,0.1031,42,12.5,Data Analyst,hard
+SQL,Data Modeling,0.1031,42,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Analytics,Deep Learning,0.0121,5,12.5,Data Scientist,hard
+Deep Learning,Analytics,0.0121,5,12.5,Program Control Services,hard
+Data Modeling,Hadoop,0.0391,9,12.5,Big Data Developer,hard
+Hadoop,Data Modeling,0.0391,9,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Spark,0.0402,9,12.5,Technical Architect - Big Data Technologies,hard
+Spark,Data Modeling,0.0402,9,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+ETL,Spark,0.0463,10,12.5,Technical Architect - Big Data Technologies,hard
+Spark,ETL,0.0463,10,12.5,Informatica Business Analysts,hard
+Docker,Java,0.0769,14,12.5,Java Developer,hard
+Java,Docker,0.0769,14,12.5,Devops Engineer - Ansible/Docker,hard
+Analytics,Reporting,0.0324,8,4.5,Data Analyst,hard
+Reporting,Analytics,0.0324,8,12.5,Program Control Services,hard
+Spark,Statistics,0.0194,5,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Spark,0.0194,5,12.5,Technical Architect - Big Data Technologies,hard
+Power BI,SQL,0.053,16,12.5,Data Analyst,hard
+SQL,Power BI,0.053,16,8.0,Analytics Manager,hard
+Hadoop,NLP,0.0305,7,12.5,Data Scientist,hard
+NLP,Hadoop,0.0305,7,12.5,Big Data Developer,hard
+NLP,Spark,0.0404,9,12.5,Technical Architect - Big Data Technologies,hard
+Spark,NLP,0.0404,9,12.5,Data Scientist,hard
+Azure,Machine Learning,0.0241,5,12.5,Data Scientist,hard
+Machine Learning,Azure,0.0241,5,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Data Warehousing,Tableau,0.0652,11,12.5,Consultant - Customer Analytics - Iit/Iim/Bits/Nit/Sp Jain/M,hard
+Tableau,Data Warehousing,0.0652,11,12.5,Informatica Business Analysts,hard
+Data Analysis,Statistics,0.0656,26,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Data Analysis,0.0656,26,8.0,Data Analyst,hard
+Excel,Statistics,0.0523,16,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Excel,0.0523,16,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Data Modeling,Hive,0.0539,10,12.5,Technical Architect - Big Data Technologies,hard
+Hive,Data Modeling,0.0539,10,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Excel,Hadoop,0.0134,5,12.5,Big Data Developer,hard
+Hadoop,Excel,0.0134,5,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Data Analysis,MySQL,0.0173,7,12.5,Python Developer,hard
+MySQL,Data Analysis,0.0173,7,8.0,Data Analyst,hard
+ETL,R,0.0181,6,12.5,Data Scientist,hard
+R,ETL,0.0181,6,12.5,Informatica Business Analysts,hard
+Data Mining,Scala,0.0604,13,12.5,Data Scientist,hard
+Scala,Data Mining,0.0604,13,12.5,Data Scientist,hard
+JavaScript,MongoDB,0.1066,26,12.5,Senior Backend Developer,hard
+MongoDB,JavaScript,0.1066,26,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+Big Data,Excel,0.0305,11,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Excel,Big Data,0.0305,11,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Mining,Hadoop,0.0522,16,12.5,Big Data Developer,hard
+Hadoop,Data Mining,0.0522,16,12.5,Data Scientist,hard
+MongoDB,R,0.0254,7,12.5,Data Scientist,hard
+R,MongoDB,0.0254,7,12.5,Senior Backend Developer,hard
+MongoDB,SQL,0.058,19,12.5,Data Analyst,hard
+SQL,MongoDB,0.058,19,12.5,Senior Backend Developer,hard
+C#,R,0.0138,5,12.5,Data Scientist,hard
+R,C#,0.0138,5,12.5,Software Engineer,hard
+Hadoop,JavaScript,0.0282,12,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Hadoop,0.0282,12,12.5,Big Data Developer,hard
+C++,Computer Vision,0.1322,13,20.0,Machine Learning Researcher - Kpo,hard
+Computer Vision,C++,0.1322,13,12.5,Quantitative Analyst - Hft,hard
+AWS,Hive,0.0349,5,12.5,Technical Architect - Big Data Technologies,hard
+Hive,AWS,0.0349,5,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Git,MySQL,0.113,15,12.5,Python Developer,hard
+MySQL,Git,0.113,15,8.0,Microsoft Fed Angular,hard
+R,Visualization,0.0594,17,12.5,Senior Consultant - Data Analytics,hard
+Visualization,R,0.0594,17,12.5,Data Scientist,hard
+Hadoop,PostgreSQL,0.0611,8,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,Hadoop,0.0611,8,12.5,Big Data Developer,hard
+MySQL,Scala,0.0739,14,12.5,Data Scientist,hard
+Scala,MySQL,0.0739,14,12.5,Python Developer,hard
+Java,SAS,0.0082,6,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Java,0.0082,6,12.5,Java Developer,hard
+Git,MongoDB,0.099,9,12.5,Senior Backend Developer,hard
+MongoDB,Git,0.099,9,8.0,Microsoft Fed Angular,hard
+PHP,PostgreSQL,0.06,5,12.5,Senior Big Data Developer - Data Warehousing/Business Intell,hard
+PostgreSQL,PHP,0.06,5,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+AWS,Machine Learning,0.0223,6,12.5,Data Scientist,hard
+Machine Learning,AWS,0.0223,6,12.5,Lead Backend Developer - Full Stack - Web Apps & Analytics,hard
+Hive,MySQL,0.0367,8,12.5,Python Developer,hard
+MySQL,Hive,0.0367,8,12.5,Technical Architect - Big Data Technologies,hard
+Big Data,Data Warehousing,0.0564,12,12.5,Informatica Business Analysts,hard
+Data Warehousing,Big Data,0.0564,12,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Big Data,ETL,0.0464,10,12.5,Informatica Business Analysts,hard
+ETL,Big Data,0.0464,10,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Analysis,Power BI,0.0471,12,8.0,Analytics Manager,hard
+Power BI,Data Analysis,0.0471,12,8.0,Data Analyst,hard
+Machine Learning,Visualization,0.0447,13,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Machine Learning,0.0447,13,12.5,Data Scientist,hard
+Data Modeling,SAS,0.0175,6,12.5,Senior Manager - Retail Analytics - Analytics Firm,hard
+SAS,Data Modeling,0.0175,6,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Modeling,Power BI,0.0494,6,8.0,Analytics Manager,hard
+Power BI,Data Modeling,0.0494,6,12.5,Big Data Architect - Data Analytics/Data Modeling,hard
+Data Mining,Visualization,0.0329,6,12.5,Senior Consultant - Data Analytics,hard
+Visualization,Data Mining,0.0329,6,12.5,Data Scientist,hard
+Analytical,Machine Learning,0.0115,5,12.5,Data Scientist,hard
+Machine Learning,Analytical,0.0115,5,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Excel,Reporting,0.0571,9,4.5,Data Analyst,hard
+Reporting,Excel,0.0571,9,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+C++,PHP,0.0499,9,12.5,Vp - Engineering/ Cto - Ecommerce Startup - Iit/ Nit/ Bits,hard
+PHP,C++,0.0499,9,12.5,Quantitative Analyst - Hft,hard
+Analytics,Clustering,0.1205,21,20.0,Assistant Vice President - Acquisition Strategy - Analytics ,hard
+Clustering,Analytics,0.1205,21,12.5,Program Control Services,hard
+Docker,Git,0.1024,6,8.0,Microsoft Fed Angular,hard
+Git,Docker,0.1024,6,12.5,Devops Engineer - Ansible/Docker,hard
+Docker,JavaScript,0.0446,7,12.5,Sap Ui5 Fiori Development (Html5 & Java),hard
+JavaScript,Docker,0.0446,7,12.5,Devops Engineer - Ansible/Docker,hard
+ETL,Java,0.0147,5,12.5,Java Developer,hard
+Java,ETL,0.0147,5,12.5,Informatica Business Analysts,hard
+Analytics,Power BI,0.0195,6,8.0,Analytics Manager,hard
+Power BI,Analytics,0.0195,6,12.5,Program Control Services,hard
+Docker,Kubernetes,0.3371,5,20.0,Engineer/Sr. Engineer - Cloudops,hard
+Kubernetes,Docker,0.3371,5,12.5,Devops Engineer - Ansible/Docker,hard
+ETL,Hive,0.0614,11,12.5,Technical Architect - Big Data Technologies,hard
+Hive,ETL,0.0614,11,12.5,Informatica Business Analysts,hard
+Azure,Git,0.0743,5,8.0,Microsoft Fed Angular,hard
+Git,Azure,0.0743,5,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Data Analysis,NLP,0.0204,7,12.5,Data Scientist,hard
+NLP,Data Analysis,0.0204,7,8.0,Data Analyst,hard
+Analytics,Mathematics,0.0395,6,10.2,Vp-Strategic Analytics,hard
+Mathematics,Analytics,0.0395,6,12.5,Program Control Services,hard
+Azure,SQL,0.0206,5,12.5,Data Analyst,hard
+SQL,Azure,0.0206,5,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard
+Analytical,Python,0.0244,12,12.5,Data Scientist,hard
+Python,Analytical,0.0244,12,8.0,Store / Logistics/ Suply Chain Walk In Interview,soft
+Excel,Problem Solving,0.0331,7,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Problem Solving,Excel,0.0331,7,8.0,Senior Manager - Retail Analytics - Analytics Firm,hard
+Problem Solving,Statistics,0.0332,5,12.5,Consultant - Data Analytics - Kpo,hard
+Statistics,Problem Solving,0.0332,5,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Data Analysis,Reporting,0.0587,12,4.5,Data Analyst,hard
+Reporting,Data Analysis,0.0587,12,8.0,Data Analyst,hard
+Docker,Scala,0.0598,5,12.5,Data Scientist,hard
+Scala,Docker,0.0598,5,12.5,Devops Engineer - Ansible/Docker,hard
+Analytics,Data Warehousing,0.0127,5,12.5,Informatica Business Analysts,hard
+Data Warehousing,Analytics,0.0127,5,12.5,Program Control Services,hard
+Problem Solving,SQL,0.0154,5,12.5,Data Analyst,hard
+SQL,Problem Solving,0.0154,5,12.5,Associate Vice President - Fraud Analytics - Sas - Bank,soft
+Dashboards,SQL,0.0292,5,12.5,Data Analyst,hard
+SQL,Dashboards,0.0292,5,8.0,Salesforce Administrator - Testing & Support,hard
+Analytics,Git,0.0175,5,8.0,Microsoft Fed Angular,hard
+Git,Analytics,0.0175,5,12.5,Program Control Services,hard
+Git,Linux,0.0419,5,12.5,Aws Architect,hard
+Linux,Git,0.0419,5,8.0,Microsoft Fed Angular,hard
+Azure,MongoDB,0.0638,5,12.5,Senior Backend Developer,hard
+MongoDB,Azure,0.0638,5,12.5,"Devops Engineer | Fractal Analytics, Mumbai",hard

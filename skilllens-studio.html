@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillLens</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("skilllens-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}catch{document.documentElement.dataset.theme="light"}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+:root{--bg:#ebe8f7;--ink:#26224a;--line:#26224a;--on:#26224a;--card:#fff;--soft:#f6f4ff;--hl:#fff6cc;--get:#d9f7ec;--dot:#d2cbee;--errbg:#ffd3d3;--scan:rgba(246,244,255,.6);--org:#ff8a3d;--mint:#3ecfa4;--but:#ffd84d;--sky:#8fd0ff;color-scheme:light}
+:root[data-theme=dark]{--bg:#14122b;--ink:#efeaff;--line:#070615;--on:#26224a;--card:#231f48;--soft:#2e2960;--hl:#3b3478;--get:#1c4a40;--dot:#26214d;--errbg:#6a2a36;--scan:rgba(46,41,96,.6);color-scheme:dark}
+body,.card,select,input,textarea,dialog,.drop{transition:background-color .25s,color .25s,border-color .25s}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg) radial-gradient(var(--dot) 2px,transparent 2px) 0 0/24px 24px;color:var(--ink);font:500 16px/1.5 Fredoka,ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;min-height:100vh}
+:focus-visible{outline:4px solid var(--sky);outline-offset:2px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1640px;margin:0 auto;padding:18px 20px 6px}
+.logo{font-weight:700;font-size:30px;background:var(--but);border:3px solid var(--line);border-radius:14px;padding:0 14px;box-shadow:0 5px 0 var(--line);transform:rotate(-2deg);color:var(--on);text-decoration:none}
+.logo span{color:#fff;-webkit-text-stroke:2px var(--on)}
+nav{display:flex;gap:10px}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;max-width:1200px;margin:0 auto;padding:16px 20px 60px;align-items:start}
+.wrap.one{display:block}
+button{font:600 15px Fredoka,system-ui,sans-serif;background:var(--but);color:var(--on);border:3px solid var(--line);border-radius:14px;padding:7px 16px;box-shadow:0 4px 0 var(--line);cursor:pointer;transition:transform .08s,box-shadow .08s}
+button:hover{background:#ffe27a}
+button:active{transform:translateY(4px);box-shadow:0 0 0 var(--line)}
+button.pri{background:var(--org)}button.pri:hover{background:#ff9d5e}
+button[aria-selected=true],button[aria-current=page]{background:var(--mint);transform:translateY(2px);box-shadow:0 2px 0 var(--line)}
+.card{background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:0 6px 0 var(--line);padding:18px;margin-bottom:26px}
+.card.on{background:var(--hl)}
+h2{font-size:22px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.drop{display:grid;place-items:center;text-align:center;min-height:64px;border:3px dashed var(--ink);border-radius:18px;background:var(--soft);padding:8px 16px;font-size:19px;font-weight:600;cursor:pointer}
+.drop small{display:block;font-size:15px;font-weight:400;opacity:.75}
+.drop:hover,.drop.on{background:var(--hl)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop:focus-within{outline:4px solid var(--sky);outline-offset:2px}
+.hint{opacity:.75;font-size:14px;margin-top:8px}
+#pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;max-height:92px;overflow:auto;flex:none;padding:0 2px 6px}
+#pills button{color:var(--on);background:var(--mint);border-radius:999px;padding:3px 14px}
+#pills button:hover{background:#ff8a8a}
+select,input[type=text],input[type=password],input[type=number],textarea{width:100%;font:500 15px Fredoka,system-ui,sans-serif;color:var(--ink);background:var(--soft);border:3px solid var(--line);border-radius:12px;padding:7px 10px}
+textarea{height:100px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.grid .card{margin:0}
+.badge{color:var(--on);background:var(--org);border:3px solid var(--line);border-radius:10px;padding:0 10px;font-size:15px;white-space:nowrap;transform:rotate(3deg);align-self:flex-start}
+.note{color:var(--on);background:var(--but);border-radius:10px;padding:6px 10px;margin:8px 0;font-size:15px}
+.get{background:var(--get);border-radius:10px;padding:6px 10px;font-size:15px}
+.win{color:var(--on);background:var(--sky);border:3px solid var(--line);border-radius:18px;padding:14px 18px;margin-top:22px;font-weight:600;font-size:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+#map{position:absolute;inset:0;border:3px solid var(--line);border-radius:18px;background:var(--soft);cursor:grab;overflow:hidden}
+.load{font-size:24px;font-weight:600;padding:30px 0;text-align:center}
+.err{background:var(--errbg);border:3px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:10px}
+aside{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+aside .card{margin:0 0 6px}
+.news{list-style:none}
+.news li{padding:10px 0;border-bottom:3px dotted var(--dot)}
+.news li:last-child{border:0}
+.news small{color:var(--on);display:inline-block;background:var(--sky);border-radius:8px;padding:0 8px;font-size:13px;margin-bottom:3px}
+.news a{color:var(--ink);font-weight:600;text-decoration:none}
+.news a:hover{text-decoration:underline}
+label{display:block;font-size:14px;margin-top:10px}
+label.use{display:flex;gap:8px;align-items:center;font-weight:600;font-size:16px;margin:0 0 4px}
+label.use input{width:20px;height:20px;accent-color:var(--org)}
+.res{margin-top:10px;font-size:14px;word-break:break-word}
+.forms{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:18px}
+.forms .card{margin:0}
+dialog{margin:auto;width:min(620px,94vw);border:3px solid var(--line);border-radius:22px;box-shadow:0 8px 0 var(--line);padding:18px;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(38,34,74,.55)}
+#qa{white-space:pre-wrap;margin-top:14px;background:var(--get);border-radius:12px;padding:10px 12px;min-height:20px}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
+
+/* ---------- 3-column studio ---------- */
+.tri{grid-template-columns:minmax(340px,1.3fr) minmax(340px,1.1fr) 330px;max-width:1640px}
+.tri>.up{grid-column:1/-1;margin:0;display:flex;align-items:center;gap:18px;padding:12px 18px}
+.up h2{margin:0;white-space:nowrap}#up{flex:1;min-width:0}#up p{margin:0}
+.col{margin:0;height:calc(100vh - 215px);min-height:620px;overflow:auto;display:flex;flex-direction:column}
+#c-map{overflow:hidden}
+.mapbox{position:relative;flex:1;min-height:340px;margin-top:8px}
+#c-map>select,#c-map>.hint{flex:none}
+.mini{padding:0 12px;font-size:14px;border-radius:10px;box-shadow:0 3px 0 var(--line)}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#c-map svg{width:100%;height:100%;display:block}
+@media(max-width:1150px){.tri{grid-template-columns:1fr 1fr}#c-news{grid-column:1/-1}}
+@media(max-width:760px){.tri{grid-template-columns:1fr}.col{height:auto;min-height:0}.mapbox{min-height:420px}.tri>.up{flex-direction:column;align-items:stretch}}
+/* ---------- flying things ---------- */
+.fly{position:fixed;left:0;top:0;z-index:60;pointer-events:none;will-change:transform,opacity}
+.paper{width:90px;height:116px;background:var(--card);border:3px solid var(--line);border-radius:8px;box-shadow:0 5px 0 var(--line);padding:12px 10px;display:grid;gap:7px;align-content:start}
+.paper i{height:6px;border-radius:3px;background:var(--sky)}.paper i:first-child{background:var(--org);width:60%}.paper i:nth-child(4){width:70%}
+.chip{color:var(--on);display:block;white-space:nowrap;background:var(--mint);border:3px solid var(--line);border-radius:999px;padding:1px 14px;font-weight:600;box-shadow:0 3px 0 var(--line)}
+.ncard{width:230px;background:var(--card);border:3px solid var(--line);border-radius:14px;box-shadow:0 4px 0 var(--line);padding:8px 10px;font-size:14px;line-height:1.3;max-height:92px;overflow:hidden}
+.ncard small{color:var(--on);display:inline-block;background:var(--sky);border-radius:8px;padding:0 8px;font-size:12px}
+.ncard a{font-weight:600;color:var(--ink);text-decoration:none}
+.hit{animation:hit .7s}
+@keyframes hit{0%,100%{transform:none}30%{transform:scale(1.015) rotate(-.4deg);background:var(--hl)}}
+/* ---------- map scanning ---------- */
+.scan{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;border-radius:18px;overflow:hidden;background:var(--scan)}
+.scan[hidden]{display:none}
+.scan i{position:absolute;width:40px;height:40px;border:4px solid var(--org);border-radius:50%;animation:ring 2s ease-out infinite}
+.scan i:nth-child(2){animation-delay:.66s}.scan i:nth-child(3){animation-delay:1.33s}
+.scan em{color:var(--on);position:relative;font-style:normal;font-weight:700;background:var(--but);border:3px solid var(--line);border-radius:12px;padding:2px 12px;box-shadow:0 4px 0 var(--line)}
+@keyframes ring{from{transform:scale(.5);opacity:1}to{transform:scale(9);opacity:0}}
+/* ---------- processing (middle) ---------- */
+.proc{display:grid;gap:24px;justify-items:center;padding:24px 0}
+.orb{position:relative;width:150px;height:150px}
+.orb span{position:absolute;inset:50px;background:var(--but);border:3px solid var(--line);border-radius:50%;box-shadow:0 4px 0 var(--line);animation:beat 1.2s ease-in-out infinite}
+.orb b{position:absolute;inset:0;border:3px dashed var(--ink);border-radius:50%;animation:spin 3s linear infinite}
+.orb b::after{content:"";position:absolute;top:-9px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--org);border:3px solid var(--line)}
+.orb b:nth-child(2){inset:18px;animation-duration:2s;animation-direction:reverse}.orb b:nth-child(2)::after{background:var(--mint)}
+.orb b:nth-child(3){inset:34px;animation-duration:1.3s}.orb b:nth-child(3)::after{background:var(--sky)}
+.proc ol{list-style:none;padding:0;display:grid;gap:8px;width:min(340px,100%)}
+.proc li{position:relative;padding:6px 12px 6px 42px;border:3px solid var(--line);border-radius:12px;background:var(--soft);opacity:.45;transition:all .3s}
+.proc li::before{content:"";position:absolute;left:11px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;border:3px solid var(--line);font-size:12px;line-height:12px;text-align:center;font-weight:700}
+.proc li.now{opacity:1;background:var(--hl);transform:translateX(8px)}
+.proc li.now::before{border-top-color:transparent;animation:spin .7s linear infinite}
+.proc li.done{opacity:1;background:var(--get)}
+.proc li.done::before{content:"\2713";background:var(--mint);color:var(--on)}
+.bar{width:min(340px,100%);height:16px;border:3px solid var(--line);border-radius:999px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--org) 0 10px,#ffb27a 10px 20px);background-size:28px 28px;animation:stripe .8s linear infinite}
+@keyframes stripe{to{background-position:28px 0}}
+.tick{min-height:52px;text-align:center;font-weight:600;max-width:34ch}.tick.in{animation:fade .5s both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.lh{font-size:14px;font-weight:600;margin-top:8px}
+.learn{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.learn span{background:var(--mint);color:var(--on);border:2px solid var(--line);border-radius:999px;padding:0 10px;font-size:14px;font-weight:600}
+.px{margin-bottom:12px;border:3px solid var(--line);border-radius:14px;background:var(--soft);padding:6px 12px}
+.px summary{font-weight:700;cursor:pointer}.px .seg{display:flex;gap:8px;margin:8px 0}
+.px .seg button{padding:1px 14px;box-shadow:0 3px 0 var(--line)}
+.px h4{font-size:14px;margin:8px 0 2px}.px .b{display:grid;grid-template-columns:150px 1fr 44px;gap:6px;align-items:center;font-size:13px;margin:2px 0}
+.px .b i{display:block;height:12px;border:2px solid var(--line);border-radius:6px;background:var(--org)}.px .b.m i{background:var(--sky)}.px .b.g i{background:var(--mint)}
+.px p.hint{margin:6px 0}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes beat{50%{transform:scale(1.18)}}
+/* ---------- idle + reveal ---------- */
+.idle{display:grid;place-items:center;text-align:center;gap:6px;padding:50px 10px;flex:1}
+.bob{font-size:64px;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-14px) rotate(6deg)}}
+.ghost{padding:12px 0}.ghost i{display:block;height:12px;margin:8px 0;border-radius:6px;background:linear-gradient(90deg,var(--soft) 25%,var(--hl) 50%,var(--soft) 75%);background-size:200% 100%;animation:sh 1.4s linear infinite}
+.ghost i:first-child{width:40%}.ghost i:last-child{width:80%}
+@keyframes sh{to{background-position:-200% 0}}
+.news.fresh li{animation:slide .5s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes slide{from{opacity:0;transform:translateX(50px)}}
+.grid .card{animation:pop .55s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i)*.13s)}
+.win{animation:pop .55s cubic-bezier(.3,1.5,.5,1) .75s both}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.85) rotate(-2deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.src{margin-top:10px;border:3px solid var(--line);border-radius:12px;background:var(--soft);padding:4px 10px;font-size:13px}
+.src summary,.px summary{cursor:pointer}.src summary{font-weight:700}
+.ev{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:7px 0;align-items:start}
+.ds{display:inline-block;font-weight:700;text-align:center;border:2px solid var(--line);border-radius:8px;color:var(--on);line-height:20px}
+.ds.A{background:#ffd84d}.ds.B{background:#8fd0ff}.ds.C{background:#3ecfa4}.ds.D{background:#ff8a3d}.ds.L{background:#d2cbee}
+.ev code{font-size:12px;background:var(--hl);border-radius:6px;padding:0 4px}
+.ev table{border-collapse:collapse;width:100%;font-size:12px;margin:4px 0;display:block;overflow-x:auto}
+.ev td,.ev th{border:1px solid var(--dot);padding:2px 5px;text-align:left;white-space:nowrap;max-width:170px;overflow:hidden;text-overflow:ellipsis}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="logo" href="#">Skill<span>Lens</span></a>
+<div class="tools"><nav><button data-v="">Studio</button><button data-v="admin">Admin</button></nav><button id="theme" type="button"></button></div>
+</header>
+
+<div class="wrap tri" id="v-studio">
+<section class="card up"><h2>1. Your resume</h2><div id="up"></div></section>
+<section class="card col" id="c-map"><h2>2. Your skill map <button class="mini" id="fit" type="button" title="Show the whole map (or double-click it)">Fit</button></h2>
+<div id="pills"></div>
+<select id="add" aria-label="Add a skill"><option value="">Add a skill...</option></select>
+<p class="hint" id="jd" style="margin:0 0 4px">Loading job data...</p>
+<div class="mapbox" id="mapbox"><div id="map"></div><div class="scan" id="scan" hidden><i></i><i></i><i></i><em>Scanning</em></div></div>
+<p class="hint" id="mh"></p></section>
+<section class="card col" id="c-plan"><h2>3. What to study</h2><details class="px" id="dsx" open></details><details class="px" id="px" open></details><div id="plan"></div></section>
+<section class="card col" id="c-news"><h2>Fresh headlines</h2><p id="nq" class="hint" style="margin:0 0 6px"></p><ul class="news" id="news"></ul></section>
+</div>
+
+<div class="wrap one" id="v-admin" hidden>
+<h2 style="font-size:34px">Admin</h2>
+<p class="hint" style="font-size:16px;max-width:70ch">Pick the AI provider and set up news and job data. <span id="cfgnote"></span> API keys only leave your machine in requests to the provider you choose.</p>
+<div class="forms" id="forms"></div>
+<div class="row"><button class="pri" id="save">Save settings</button><span id="saved" role="status" style="align-self:center"></span></div>
+</div>
+
+<dialog id="q">
+<h2>Ask one question</h2>
+<textarea id="qt" aria-label="Your question" placeholder="Example: How do I start the first item this week?"></textarea>
+<div class="row" style="margin-top:0"><button class="pri" id="qgo">Get answer</button><button id="qx">Close</button></div>
+<div id="qa" role="status"></div>
+</dialog>
+
+<script>
+const DEF={active:'ollama',
+ ollama:{url:'http://100.64.70.70:11434',model:'qwen2.5:7b-instruct',ctx:8192,timeout:240},
+ openrouter:{url:'https://openrouter.ai/api/v1',key:'',model:'meta-llama/llama-3.1-8b-instruct',timeout:120},
+ custom:{name:'My provider',url:'https://api.openai.com/v1',key:'',model:'gpt-4o-mini',timeout:120},
+ news:{key:'e05cb69a964847efb086b6b3e91e1933',exclude:'weather,forecast,horoscope,cricket,IPL,box office,lottery',refresh:20},
+ jobs:{url:'skill_connections_rich.csv',header:'Authorization',value:''},
+ data:{a:'cleaned_ds_jobs.csv',b:'cleaned_analytics_jobs.csv',c:'cleaned_jds_skills.csv',d:'cleaned_sds_personality.csv'}};
+const FIELDS={
+ ollama:[['url','Server URL'],['model','Model'],['ctx','Context size','number'],['timeout','Give up after (seconds)','number']],
+ openrouter:[['url','Base URL'],['key','API key','password'],['model','Model'],['timeout','Give up after (seconds)','number']],
+ custom:[['name','Label'],['url','Base URL (ends in /v1)'],['key','API key','password'],['model','Model'],['timeout','Give up after (seconds)','number']],
+ news:[['key','NewsAPI key','password'],['exclude','Words to exclude (comma separated)'],['refresh','Refresh every (minutes)','number']],
+ jobs:[['url','CSV URL'],['header','Auth header name'],['value','Auth header value','password']],
+ data:[['a','A: data science jobs CSV'],['b','B: analytics jobs CSV'],['c','C: junior skill traits CSV'],['d','D: senior personality CSV']]};
+const TITLES={ollama:'Ollama (your server)',openrouter:'OpenRouter',custom:'OpenAI-compatible',news:'News',jobs:'Job data',data:'Datasets A to D'};
+const PROV=['ollama','openrouter','custom'];
+let saved={};try{saved=JSON.parse(localStorage.getItem('skilllens')||'{}')}catch{}
+const merge=s=>Object.fromEntries(Object.entries(DEF).map(([k,v])=>[k,typeof v=='object'?{...v,...(s[k]||{})}:s[k]??v]));
+let CFG=merge(saved);
+
+const $=id=>document.getElementById(id);
+const h=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const jx=s=>JSON.parse(s.slice(s.indexOf('{'),s.lastIndexOf('}')+1));
+let PX=null,STAGE=(()=>{try{return localStorage.getItem('skilllens-stage')||'junior'}catch{return'junior'}})(),csv=[],news=[],resume='',known=[],mk={next:[]},plan=null,terms=[],vocab=[],all=new Set(),SIM=null,popIn=true;
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+/* ---------- Animation helpers ---------- */
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,rnd=n=>(Math.random()-.5)*n;
+const IDLE='<div class="idle"><div class="bob">&#128218;</div><p class="hint">Upload a resume and your study plan shows up here.</p></div>';
+const GHOST='<li class="ghost"><i></i><i></i><i></i></li>'.repeat(4);
+const PAPER='<div class="paper"><i></i><i></i><i></i><i></i><i></i></div>';
+/* ---------- Cache: same resume file (SHA-256) + same model/stage/skills = no new AI call ---------- */
+const CK='skilllens-cache',CTTL=7*864e5;
+const cget=k=>{try{const e=JSON.parse(localStorage.getItem(CK)||'{}')[k];return e&&Date.now()-e.t<CTTL?e.v:null}catch{return null}};
+const cset=(k,v)=>{try{const c=JSON.parse(localStorage.getItem(CK)||'{}');c[k]={t:Date.now(),v};Object.keys(c).sort((x,y)=>c[y].t-c[x].t).slice(30).forEach(x=>delete c[x]);localStorage.setItem(CK,JSON.stringify(c))}catch{}};
+async function sha(buf){try{const d=await crypto.subtle.digest('SHA-256',buf);return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,'0')).join('')}catch{let x=5381;const u=new Uint8Array(buf);for(let i=0;i<u.length;i++)x=((x<<5)+x+u[i])|0;return 'djb'+(x>>>0).toString(16)+u.length}}
+let RH='';const mid=()=>CFG.active+':'+((CFG[CFG.active]||{}).model||'');
+const STEPS=['Reading your resume','Spotting your skills','Scanning fresh headlines','Writing your study plan'];
+function fly(from,to,o={}){if(RM||!from||!to)return Promise.resolve();
+const a=from.getBoundingClientRect(),b=to.getBoundingClientRect(),e=document.createElement('div');
+e.className='fly';e.innerHTML=o.html;document.body.appendChild(e);
+const w=e.offsetWidth,hh=e.offsetHeight,s=o.scale||[1,.25],r=o.rot||[0,0],j=o.j||0,
+x0=a.left+a.width/2-w/2,y0=a.top+a.height/2-hh/2,x1=b.left+b.width/2-w/2+rnd(j),y1=b.top+b.height/2-hh/2+rnd(j),
+T=(x,y,k,d)=>`translate(${x}px,${y}px) scale(${k}) rotate(${d}deg)`;
+return e.animate([{transform:T(x0,y0,s[0],r[0]),opacity:0},{opacity:1,offset:.15},
+{transform:T((x0+x1)/2,(y0+y1)/2+(o.arc??-90),(s[0]+s[1])/2+.15,r[1]/2),offset:.55},
+{transform:T(x1,y1,s[1],r[1]),opacity:.6}],{duration:o.dur||900,delay:o.delay||0,easing:'cubic-bezier(.5,0,.3,1)',fill:'both'})
+.finished.then(()=>e.remove(),()=>e.remove())}
+const pulse=el=>{el.classList.remove('hit');void el.offsetWidth;el.classList.add('hit')};
+const flySkills=l=>Promise.all(l.slice(0,12).map((s,i)=>fly($('up'),$('mapbox'),{html:`<span class="chip">${h(s)}</span>`,dur:850,delay:i*90,arc:-140+rnd(80),scale:[.7,.5],j:170})));
+function flyNews(){Promise.all([...document.querySelectorAll('#news li')].slice(0,6).map((li,i)=>fly(li,$('mapbox'),
+{html:`<div class="ncard">${li.innerHTML}</div>`,dur:1100,delay:350+i*130,arc:-60-i*25,scale:[1,.25],rot:[0,-12],j:120}))).then(()=>pulse($('c-map')))}
+let TK=null;const stopTick=()=>{clearInterval(TK);TK=null};
+function startTick(){stopTick();let k=0;const t=()=>{const el=$('tick');if(!el)return stopTick();const f=[...mk.next.slice(0,10).map(x=>`${x.skill} shows up in ${x.n} job postings${x.role?', often for '+x.role:''}.`),...news.slice(0,8).map(x=>'In the news: '+x.title),'Tip: tap a skill chip to remove it, or add your own.'];
+el.classList.remove('in');void el.offsetWidth;el.textContent=f[k++%f.length];el.classList.add('in')};t();TK=setInterval(t,2600)}
+function proc(i){const P=$('plan');if(!P.querySelector('.proc')){P.innerHTML='<div class="proc"><div class="orb"><b></b><b></b><b></b><span></span></div><div class="bar"><i></i></div><ol>'+STEPS.map(s=>`<li>${s}</li>`).join('')+'</ol><p class="tick" id="tick"></p></div>';startTick()}
+P.querySelectorAll('.proc li').forEach((e,k)=>e.className=k<i?'done':k==i?'now':'');
+const b=P.querySelector('.bar i'),last=i>=STEPS.length-1;if(b){b.style.transition=last?'width 40s cubic-bezier(.1,.7,.2,1)':'width .6s ease';b.style.width=(last?94:(i+1)*17)+'%'}}
+
+/* ---------- Network: goes through server.py when it is running ---------- */
+let PROXY=false;
+const pushCfg=async()=>{if(!PROXY)return false;try{return (await fetch('/config',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(CFG)})).ok}catch{return false}};
+const READY=(async()=>{try{PROXY=(await fetch('/ping')).ok}catch{}
+if(PROXY)try{const j=await(await fetch('/config')).json();if(j&&Object.keys(j).length)CFG=merge(j);else await pushCfg()}catch{}})();
+const THEME=t=>{document.documentElement.dataset.theme=t;try{localStorage.setItem('skilllens-theme',t)}catch{}$('theme').innerHTML=t=='dark'?'&#9728; Light':'&#9790; Dark'};
+$('theme').onclick=()=>{THEME(document.documentElement.dataset.theme=='dark'?'light':'dark');drawMap()};THEME(document.documentElement.dataset.theme);
+const net=(u,o={})=>PROXY&&/^https?:/.test(u)?fetch('/proxy',{method:'POST',signal:o.signal,body:JSON.stringify({url:u,method:o.method||'GET',headers:o.headers||{},body:o.body||null})}):fetch(u,o);
+async function why(r,n){let t='';try{t=await r.text();const j=JSON.parse(t),e=j.error;t=(typeof e=='string'?e:e?.message)||t;if(e?.metadata)t+=' '+JSON.stringify(e.metadata).slice(0,160)}catch{}return `${n} replied ${r.status}: ${String(t).slice(0,240)}`}
+
+/* ---------- AI provider ---------- */
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),tmoOf=(C=CFG)=>+(C[C.active]||{}).timeout||150;
+async function ask(m,json,C=CFG){const k=C.active,p=C[k],tmo=tmoOf(C)*1000;let noJson=false,last;
+for(let a=0;a<3;a++){const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),tmo);
+try{let out;
+if(k=='ollama'){const r=await net(p.url.replace(/\/$/,'')+'/api/chat',{method:'POST',signal:ac.signal,body:JSON.stringify({model:p.model,stream:false,format:json&&!noJson?'json':undefined,options:{num_ctx:+p.ctx,temperature:.3,num_predict:json?3000:1500},messages:m})});
+if(!r.ok){const e=new Error(await why(r,'Ollama'));e.status=r.status;throw e}out=(await r.json()).message?.content}
+else{const r=await net(p.url.replace(/\/$/,'')+'/chat/completions',{method:'POST',signal:ac.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+p.key},body:JSON.stringify({model:p.model,messages:m,temperature:.3,max_tokens:3000,...(json&&!noJson&&{response_format:{type:'json_object'}})})});
+if(!r.ok){const e=new Error(await why(r,p.name||TITLES[k]));e.status=r.status;throw e}out=(await r.json()).choices?.[0]?.message?.content}
+out=String(out??'').replace(/<think>[\s\S]*?<\/think>/gi,'').trim();
+if(!out)throw Object.assign(new Error('The model sent an empty reply'),{status:500});
+return out}
+catch(e){last=e;
+if(ac.signal.aborted)throw new Error('No reply from '+(p.name||TITLES[k])+' after '+tmoOf(C)+'s. The model may be too slow or stuck. Try a smaller model or raise the timeout in Admin');
+if(e.status==400&&json&&!noJson){noJson=true;continue}
+const retry=e.status==429||e.status>=500||e instanceof TypeError;
+if(!retry||a==2)throw e;await sleep(1500*(a+1))}
+finally{clearTimeout(tm)}}
+throw last}
+
+/* ---------- Admin ---------- */
+function renderAdmin(){$('cfgnote').textContent=PROXY?'Settings (provider, model, API keys) are saved to config.json next to server.py, so you set them once.':'Settings are saved in this browser only. Run python server.py to save them to a file instead.';$('forms').innerHTML=Object.keys(FIELDS).map(k=>{const P=PROV.includes(k);
+return `<section class="card${P&&CFG.active==k?' on':''}" data-k="${k}"><h2>${TITLES[k]}</h2>`+
+(P?`<label class="use"><input type="radio" name="act" value="${k}" ${CFG.active==k?'checked':''}> Use this provider</label>`:'')+
+FIELDS[k].map(([f,l,t])=>`<label>${l}<input data-f="${f}" type="${t||'text'}" value="${h(CFG[k][f])}"></label>`).join('')+
+(P?`<div class="row" style="margin-top:14px"><button data-test="${k}">Test connection</button></div><p class="res" id="r-${k}"></p>`:'')+`</section>`}).join('')}
+function readForm(){const c=merge({});c.active=(document.querySelector('[name=act]:checked')||{}).value||CFG.active;
+document.querySelectorAll('#forms [data-f]').forEach(i=>{const k=i.closest('section').dataset.k;c[k][i.dataset.f]=i.type=='number'?+i.value:i.value.trim()});return c}
+$('forms').onclick=async e=>{const k=e.target.dataset.test;if(!k)return;const r=$('r-'+k);r.textContent='Testing...';
+const c=readForm();c.active=k;try{r.textContent='Works. Reply: '+(await ask([{role:'user',content:'Reply with the single word: ok'}],false,c)).slice(0,60)}
+catch(err){r.textContent='Failed: '+err.message+'. Check the URL, key and model.'+(PROXY?'':' Run python server.py so requests are not blocked by the browser.')}};
+$('save').onclick=async()=>{CFG=readForm();try{localStorage.setItem('skilllens',JSON.stringify(CFG))}catch{}const ok=await pushCfg();renderAdmin();
+$('saved').textContent=(ok?'Saved to config.json. ':'Saved in this browser only. ')+TITLES[CFG.active]+' is now in use.';loadCsv();loadNews();loadDS()};
+
+/* ---------- Datasets A-D: loaded here, and every result can show the rows/columns behind it ---------- */
+let DS={};
+const COLS_C=['storytelling_and_dashboard_skills','ai_ml_skills','big_data_skills','maths_stats_skills','coding_skills'],
+LAB_C={storytelling_and_dashboard_skills:'Storytelling & dashboards',ai_ml_skills:'AI / ML',big_data_skills:'Big data',maths_stats_skills:'Maths & stats',coding_skills:'Coding'},
+COLS_D=['openness','conscientiousness','extraversion','agreeableness','neuroticism'],
+LAB_D={openness:'Openness',conscientiousness:'Conscientiousness',extraversion:'Extraversion',agreeableness:'Agreeableness',neuroticism:'Neuroticism'},
+DEFCAT={storytelling_and_dashboard_skills:['storytelling','data storytelling','tableau','power bi','powerbi','dashboard','dashboards','communication','presentation','data visualization','visualization','looker','excel'],
+ai_ml_skills:['machine learning','deep learning','ai','nlp','tensorflow','pytorch','scikit-learn','computer vision','llm','generative ai','keras'],
+big_data_skills:['spark','pyspark','hadoop','kafka','hive','big data','databricks','airflow','snowflake','aws','azure','gcp'],
+maths_stats_skills:['statistics','statistical analysis','probability','mathematics','regression','forecasting','a/b testing','hypothesis testing','linear algebra','time series'],
+coding_skills:['python','sql','r','java','scala','c++','javascript','git','programming']};
+const nk=s=>String(s).trim().toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,''),
+catOf=s=>{const l=String(s).toLowerCase();for(const k in DEFCAT)if(DEFCAT[k].includes(l))return k;return null},
+med=a=>{if(!a.length)return 0;a=a.slice().sort((x,y)=>x-y);return a[a.length>>1]};
+function pearson(x,y){const n=x.length;let sx=0,sy=0;for(let i=0;i<n;i++){sx+=x[i];sy+=y[i]}const mx=sx/n,my=sy/n;let a=0,b=0,c=0;for(let i=0;i<n;i++){const u=x[i]-mx,v=y[i]-my;a+=u*v;b+=u*u;c+=v*v}return b&&c?a/Math.sqrt(b*c):0}
+const ALIAS={ai_and_ml_skills:'ai_ml_skills',dashboard_and_storytelling_skills:'storytelling_and_dashboard_skills',salary_hike_high_or_low:'salary_hike',success_classification_high_low:'success',success_classification:'success',openness_to_experience:'openness'},
+yv=v=>{const t=String(v).trim().toLowerCase();if(['high','yes','true','y'].includes(t))return 1;if(['low','no','false','n'].includes(t))return 0;return parseFloat(t)};
+async function getTable(u){try{const r=await net(u);if(!r.ok)return null;return parseCsv(await r.text()).map(o=>Object.fromEntries(Object.entries(o).map(([k,v])=>{k=nk(k);return[ALIAS[k]||k,v]})))}catch{return null}}
+function traits(t,cols,y,lab){if(!t||!t.length)return null;const ks=cols.filter(k=>k in t[0]);if(!ks.length||!(y in t[0]))return null;
+const rows=t.filter(r=>ks.every(k=>isFinite(parseFloat(r[k])))&&isFinite(yv(r[y])));if(rows.length<5)return null;const Y=rows.map(r=>yv(r[y])),av=a=>a.length?a.reduce((p,q)=>p+q,0)/a.length:0;
+return{n:rows.length,rate:av(Y),cols:ks.map(k=>{const X=rows.map(r=>+r[k]);return{key:k,label:lab[k]||k,r:pearson(X,Y),mp:av(X.filter((_,i)=>Y[i]==1)),mn:av(X.filter((_,i)=>Y[i]!=1))}})}}
+async function loadDS(){const U=CFG.data;DS={loading:1};renderDS();
+const [a,b,c,d]=await Promise.all([U.a,U.b,U.c,U.d].map(u=>u?getTable(u):null));DS={};
+if(a)DS.A={file:U.a,n:a.length,rows:a.map(r=>({ref:r.reference_no,co:r.company_name,role:r.job_title,sal:parseFloat(r.avg_salary),exp:r.min_experience}))};
+if(b){const idx=new Map(),rows=b.map((r,i)=>{const sk=String(r.key_skills||'').split(/[,|;]/).map(x=>x.trim().toLowerCase()).filter(Boolean);sk.forEach(s=>(idx.get(s)||idx.set(s,[]).get(s)).push(i));return{id:r.s_no,role:r.job_desig,loc:r.location,exp:r.experience,sk}});
+DS.B={file:U.b,n:rows.length,rows,idx,top:[...idx].map(([k,v])=>[k,v.length]).sort((x,y)=>y[1]-x[1]).slice(0,6)}}
+const C=traits(c,COLS_C,'salary_hike',LAB_C),D=traits(d,COLS_D,'success',LAB_D);if(C)DS.C={file:U.c,...C};if(D)DS.D={file:U.d,...D};
+renderPX();renderDS();mk=market();drawMap()}
+function evidence(skill){const s=String(skill).toLowerCase(),ev=[];let role='';
+if(DS.B){let ix=DS.B.idx.get(s);if(!ix){ix=[];if(s.length>3)for(const[k,v]of DS.B.idx)if(k.includes(s))ix=ix.concat(v);ix=[...new Set(ix)]}
+if(ix.length){const top=f=>{const m={};ix.forEach(i=>{const v=DS.B.rows[i][f];if(v)m[v]=(m[v]||0)+1});return Object.entries(m).sort((x,y)=>y[1]-x[1])[0]},r=top('role'),l=top('loc');role=r?r[0]:'';
+ev.push({d:'B',file:DS.B.file,cols:'key_skills, job_desig, location',text:`${ix.length.toLocaleString()} of ${DS.B.n.toLocaleString()} analytics postings (${(ix.length/DS.B.n*100).toFixed(1)}%) list ${skill}`+(role?`, most often for ${role}`:'')+(l?`, mainly in ${l[0]}`:'')+'.',rows:ix.slice(0,5).map(i=>DS.B.rows[i])})}}
+if(DS.A&&role){const rl=role.toLowerCase(),m=DS.A.rows.filter(r=>r.role&&(r.role.toLowerCase().includes(rl)||rl.includes(r.role.toLowerCase()))),sl=m.map(r=>r.sal).filter(x=>x>0);
+if(m.length)ev.push({d:'A',file:DS.A.file,cols:'job_title, avg_salary, min_experience',text:`${m.length} of ${DS.A.n.toLocaleString()} data science postings have a title like "${role}"`+(sl.length?`; median average pay ${med(sl).toFixed(1)} LPA`:'')+'.',rows:m.slice(0,5)})}
+if(STAGE=='junior'&&DS.C){const k=catOf(skill),f=k&&DS.C.cols.find(c=>c.key==k);
+if(f)ev.push({d:'C',file:DS.C.file,cols:f.key+', salary_hike',text:`${f.label}: r=${f.r.toFixed(2)} with getting a hike across ${DS.C.n} juniors (average score ${f.mp.toFixed(0)} for those promoted, ${f.mn.toFixed(0)} for the rest).`})}
+if(STAGE=='senior'&&DS.D){const t=DS.D.cols.slice().sort((a,b)=>Math.abs(b.r)-Math.abs(a.r)).slice(0,3);
+ev.push({d:'D',file:DS.D.file,cols:t.map(x=>x.key).join(', ')+', success',text:`Work habits weighed by Big Five traits across ${DS.D.n} seniors: `+t.map(x=>x.label+' r='+x.r.toFixed(2)).join(', ')+'.'})}
+const lk=csv.filter(r=>r.study_next&&r.study_next.toLowerCase()==s);
+if(lk.length){const fr={};let tot=0;lk.forEach(r=>{const c=+r.co_occurrence_count||0;tot+=c;fr[r.known_skill]=(fr[r.known_skill]||0)+c});
+ev.push({d:'L',file:CFG.jobs.url,cols:'known_skill, study_next, co_occurrence_count',text:`${lk.length} skill links lead to ${skill} (${tot.toLocaleString()} co-occurrences), strongest from ${Object.entries(fr).sort((a,b)=>b[1]-a[1]).slice(0,3).map(x=>x[0]).join(', ')}.`})}
+return ev}
+const rowsTable=e=>{const A=e.d=='A';return '<table><tr>'+(A?'<th>reference_no</th><th>company</th><th>job_title</th><th>avg LPA</th><th>min yrs</th>':'<th>s_no</th><th>job_desig</th><th>location</th><th>experience</th><th>key_skills</th>')+'</tr>'+
+e.rows.map(r=>'<tr>'+(A?[r.ref,r.co,r.role,r.sal>0?r.sal:'',r.exp]:[r.id,r.role,r.loc,r.exp,r.sk.slice(0,4).join(', ')]).map(v=>`<td>${h(v)}</td>`).join('')+'</tr>').join('')+'</table>'};
+const evHTML=ev=>ev.length?ev.map(e=>`<div class="ev"><span class="ds ${e.d}">${e.d}</span><div>${h(e.text)}<br><small><code>${h(e.file)}</code> columns <code>${h(e.cols)}</code></small>${e.rows&&e.rows.length?'<small>First matching rows:</small>'+rowsTable(e):''}</div></div>`).join(''):'<p class="hint">No dataset rows matched this skill. It comes from the headlines or the AI.</p>';
+const srcBox=sk=>{const ev=evidence(sk);return `<details class="src"><summary>Data used: ${ev.map(e=>e.d).join(' ')||'none'}</summary>${evHTML(ev)}</details>`};
+const usedLine=()=>{const u=new Set();(Array.isArray(plan.study)?plan.study:[]).forEach(s=>evidence(s.skill).forEach(e=>u.add(e.d)));
+return u.size?`<p class="hint" style="margin:-8px 0 14px">This plan used: ${[...u].sort().map(k=>`<span class="ds ${k}" style="padding:0 7px">${k}</span>`).join(' ')} Open "Data used" on a card to see the rows and columns.</p>`:''};
+function dsCtx(){let t='';
+if(DS.B)t+='\n\nDATASET EVIDENCE (Dataset B, analytics postings mentioning each skill):\n'+mk.next.slice(0,15).map(x=>{const e=evidence(x.skill).find(e=>e.d=='B');return e?x.skill+': '+e.text:''}).filter(Boolean).join('\n');
+if(!PX){if(STAGE=='junior'&&DS.C)t+='\n\nPROMOTION EVIDENCE (Dataset C, '+DS.C.n+' juniors), correlation with salary_hike:\n'+DS.C.cols.map(f=>f.label+': r='+f.r.toFixed(2)).join('\n');
+if(STAGE=='senior'&&DS.D)t+='\n\nSUCCESS EVIDENCE (Dataset D, '+DS.D.n+' seniors), correlation with success:\n'+DS.D.cols.map(f=>f.label+': r='+f.r.toFixed(2)).join('\n')}
+return t}
+function renderDS(){const E=$('dsx'),T={A:'Data science jobs',B:'Analytics jobs',C:'Junior skill traits',D:'Senior personality'},pc=x=>Math.round(x*100)+'%';
+const st=['A','B','C','D'].map(k=>{const d=DS[k];return `<div class="ev"><span class="ds ${k}">${k}</span><div>${T[k]}<br><small><code>${h(CFG.data[k.toLowerCase()])}</code> ${d?d.n.toLocaleString()+' rows loaded':DS.loading?'loading...':'not found: put it next to server.py or set the path in Admin'}</small></div></div>`}).join('');
+const S=STAGE=='junior'?DS.C:DS.D;let body='';
+if(S){const F=S.cols.slice().sort((a,b)=>b.r-a.r),mx=Math.max(...F.map(f=>Math.abs(f.r)))||1;
+body=`<h4>${STAGE=='junior'?`Dataset C: what earns juniors a hike (${S.n} people, ${pc(S.rate)} promoted)`:`Dataset D: what predicts senior success (${S.n} people, ${pc(S.rate)} in leadership)`}</h4>`+F.map(f=>bar(f.label,Math.max(f.r,0),mx,STAGE=='junior'?'':'g','r='+f.r.toFixed(2))).join('')+`<p class="hint">Correlation of each column with <code>${STAGE=='junior'?'salary_hike':'success'}</code>.</p>`}
+if(DS.B)body+=`<h4>Dataset B: most asked-for skills (${DS.B.n.toLocaleString()} postings)</h4>`+DS.B.top.map(([k,v])=>bar(k,v,DS.B.top[0][1],'m',pc(v/DS.B.n))).join('')+'<p class="hint">Counted from the <code>key_skills</code> column.</p>';
+E.innerHTML=`<summary>The data behind the results</summary><div class="seg"><button data-st="junior" aria-selected="${STAGE=='junior'}">Junior</button><button data-st="senior" aria-selected="${STAGE=='senior'}">Senior</button></div>${st}${body}`}
+
+/* ---------- Upskilling paradox (from paradox.json, built by build_skilllens_data.py) ---------- */
+const bar=(l,v,mx,c,t)=>`<div class="b ${c}"><span>${h(l)}</span><i style="width:${Math.max(2,v/mx*100)}%"></i><b>${t}</b></div>`;
+function renderPX(){const E=$('px');if(!PX||DS.C||DS.D){E.hidden=true;return}E.hidden=false;const m=PX.market,J=PX.junior.features,S=PX.senior.traits,pc=x=>Math.round(x*100)+'%';
+E.innerHTML=`<summary>The upskilling paradox</summary><div class="seg"><button data-st="junior" aria-selected="${STAGE=='junior'}">Junior</button><button data-st="senior" aria-selected="${STAGE=='senior'}">Senior</button></div>
+<h4>Asked for in ${m.postings.toLocaleString()} job posts</h4>${bar('Hard tech',m.hard_share,1,'m',pc(m.hard_share))}${bar('Soft skills',1-m.hard_share,1,'m',pc(1-m.hard_share))}
+<h4>${STAGE=='junior'?`What earns juniors a high hike (${PX.junior.n} people)`:`What predicts senior success (${PX.senior.n} people)`}</h4>`+
+(STAGE=='junior'?J.slice(0,4).map(f=>bar(f.label,f.importance,J[0].importance,'',pc(f.importance))).join(''):S.slice(0,4).map(t=>bar(t.trait,Math.max(t.r,0),S[0].r||1,'g','r='+t.r.toFixed(2))).join(''))+
+`<p class="hint">Correlations from small samples, not guarantees. The study plan weighs skills by this evidence.</p>`}
+const stg=e=>{const b=e.target.closest('button[data-st]');if(!b)return;e.preventDefault();STAGE=b.dataset.st;try{localStorage.setItem('skilllens-stage',STAGE)}catch{}renderPX();renderDS();mk=market();drawMap();if(plan&&resume)run()};$('px').onclick=stg;$('dsx').onclick=stg;
+async function loadPX(){try{PX=await(await fetch('paradox.json')).json()}catch{PX=null}renderPX();mk=market();drawMap()}
+
+/* ---------- Data ---------- */
+function parseCsv(t){const rows=[];let r=[],c='',q=false;
+for(let i=0;i<t.length;i++){const ch=t[i];
+if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+else if(ch=='"')q=true;else if(ch==','){r.push(c);c=''}
+else if(ch=='\n'){r.push(c.replace(/\r$/,''));rows.push(r);r=[];c=''}else c+=ch}
+if(c||r.length){r.push(c);rows.push(r)}
+const hd=rows.shift();return rows.filter(x=>x.length==hd.length).map(x=>Object.fromEntries(hd.map((k,i)=>[k,x[i]])))}
+async function loadCsv(){const J=CFG.jobs;try{
+const r=await net(J.url,{headers:J.value?{[J.header||'Authorization']:J.value}:{}});if(!r.ok)throw new Error(r.status);
+csv=parseCsv(await r.text());
+$('add').innerHTML='<option value="">Add a skill...</option>'+[...new Set(csv.map(r=>r.known_skill))].sort().map(s=>`<option>${h(s)}</option>`).join('');
+const tot={};csv.forEach(r=>{tot[r.known_skill]=(tot[r.known_skill]||0)+ +r.co_occurrence_count;tot[r.study_next]=(tot[r.study_next]||0)+ +r.co_occurrence_count});vocab=Object.keys(tot).sort((a,b)=>tot[b]-tot[a]);all=new Set(vocab);
+$('jd').textContent='Tap a skill to remove it, or add your own. Job data: '+csv.length+' links.'}
+catch{csv=[];$('jd').textContent='Job data not loaded. Check the job data settings in Admin.'}mk=market();drawMap()}
+function clearNews(){news=[];$('nq').textContent='Upload a resume to see headlines that match your skills.';$('news').className='news';$('news').innerHTML=GHOST}
+async function loadNews(fresh){if(!resume||!terms.length)return clearNews();
+const N=CFG.news,from=new Date(Date.now()-28*864e5).toISOString().slice(0,10);
+const bad=N.exclude.split(',').map(x=>x.trim().replace(/"/g,'')).filter(Boolean).map(x=>`"${x}"`).join(' OR ');
+const mkq=t=>`(${t.map(x=>`"${x}"`).join(' OR ')})`+(bad?` NOT (${bad})`:'');let ts=terms.slice(),q=mkq(ts);while(q.length>480&&ts.length>3){ts.pop();q=mkq(ts)}
+const get=sort=>net('https://newsapi.org/v2/everything?'+new URLSearchParams({qInTitle:q,language:'en',sortBy:sort,from,pageSize:100,apiKey:N.key})).then(r=>r.json());
+try{const rs=(await Promise.allSettled(fresh?[get('relevancy'),get('publishedAt')]:[get('relevancy')])).map(x=>x.value).filter(Boolean),ok=rs.filter(j=>j.status=='ok');
+if(!ok.length)throw (rs[0]&&rs[0].message)||'request failed';
+const seen=new Set(),a=ok.flatMap(j=>j.articles).filter(x=>x.title&&x.title!='[Removed]'&&!seen.has(x.url)&&seen.add(x.url)),re=terms.map(t=>new RegExp('\\b'+esc(t)+'\\b','i')),isHit=x=>re.some(r=>r.test(x.title));
+const hit=a.filter(isHit).sort((x,y)=>new Date(y.publishedAt)-new Date(x.publishedAt));
+news=(hit.length>=10?hit:[...hit,...a.filter(x=>!isHit(x))]).slice(0,40);
+$('nq').textContent='Matched to your resume: '+terms.join(', ')+'. '+news.length+' headlines, the top 25 are read by the AI.';
+$('news').innerHTML=news.map((a,i)=>`<li style="--i:${Math.min(i,12)}"><small>${h(a.source.name)} | ${new Date(a.publishedAt).toLocaleDateString([],{day:'numeric',month:'short'})}</small><br><a href="${h(a.url)}" target="_blank" rel="noopener">${h(a.title)}</a></li>`).join('')||'<li>No recent headlines match your skills.</li>';$('news').className='news'+(fresh?' fresh':'');if(fresh&&news.length)flyNews()}
+catch(e){$('news').innerHTML=`<li class="err">News failed: ${h(e)}.${PROXY?'':' Start the page with python server.py.'}</li>`}}
+
+/* ---------- Studio ---------- */
+async function readFile(f){
+if(/\.pdf$/i.test(f.name)){const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;let t='';
+for(let i=1;i<=pdf.numPages;i++)t+=(await(await pdf.getPage(i)).getTextContent()).items.map(x=>x.str).join(' ')+'\n';return t}
+return f.text()}
+function match(){const low=resume.toLowerCase();
+return [...new Set(csv.flatMap(r=>[r.known_skill,r.study_next]))].filter(n=>{if(n.length<2)return false;const s=n.length<=3;
+return new RegExp('(^|[^A-Za-z0-9])'+esc(s?n:n.toLowerCase())+'($|[^A-Za-z0-9])').test(s?resume:low)}).slice(0,10)}
+const pw=s=>{if(STAGE!='junior')return 1;const l=String(s).toLowerCase();if(DS.C){const k=catOf(s),f=k&&DS.C.cols.find(c=>c.key==k);return f?1+Math.max(f.r,0)*1.5:1}if(PX){for(const k in PX.categories)if(PX.categories[k].includes(l)){const f=PX.junior.features.find(f=>f.key==k);return f?1+f.importance*3:1}}return 1};
+function market(){const ck=known.filter(s=>all.has(s)),agg={};
+csv.filter(r=>!ck.length||ck.includes(r.known_skill)).forEach(r=>{if(known.includes(r.study_next))return;
+const a=agg[r.study_next]||={skill:r.study_next,n:0,sals:[],roles:{}},c=+r.co_occurrence_count||0,v=parseFloat(r.target_salary_lpa);a.n+=c;if(v>0)a.sals.push(v);if(r.target_role)a.roles[r.target_role]=(a.roles[r.target_role]||0)+c});
+return{next:Object.values(agg).map(a=>{const q=a.sals.sort((x,y)=>x-y),ro=Object.entries(a.roles).sort((x,y)=>y[1]-x[1])[0];return{skill:a.skill,n:a.n,sal:q.length?q[q.length>>1]:0,role:ro?ro[0]:''}}).sort((x,y)=>y.n*pw(y.skill)-x.n*pw(x.skill)).slice(0,25)}}
+function setKnown(a){known=a;mk=market();
+$('pills').innerHTML=known.map(s=>`<button data-s="${h(s)}">${h(s)} x</button>`).join('')||'<span class="hint">No skills yet.</span>';drawMap()}
+$('pills').onclick=e=>{const b=e.target.closest('button');if(b)setKnown(known.filter(s=>s!=b.dataset.s))};
+$('add').onchange=e=>{const s=e.target.value;if(s&&!known.includes(s))setKnown([...known,s]);e.target.value=''};
+
+const ctx=()=>`RESUME:\n${resume.slice(0,5000)}\n\nLATEST NEWS:\n${news.slice(0,25).map((a,i)=>`${i+1}. ${a.title} (${a.source.name})`).join('\n')}\n\nMARKET DATA (India job postings: skill | postings | typical min salary LPA | common role). n/a means unknown: never mention it.\n${mk.next.map(x=>`${x.skill} | ${x.n} | ${x.sal>0?x.sal.toFixed(1):'n/a'} | ${x.role||'n/a'}`).join('\n')}${dsCtx()}\n\nSTRONGEST LINKS FROM KNOWN SKILLS:\n${csv.filter(r=>known.includes(r.known_skill)&&!known.includes(r.study_next)).sort((a,b)=>b.connection_strength-a.connection_strength).slice(0,15).map(r=>`${r.known_skill} -> ${r.study_next}`).join('\n')}${PX?`\n\nPROMOTION EVIDENCE (${STAGE}):\n${STAGE=='junior'?PX.junior.features.map(f=>`${f.label}: ${Math.round(f.importance*100)}% of what predicts a high hike, in ${Math.round(f.market_share*100)}% of postings (skills: ${(PX.categories[f.key]||[]).slice(0,6).join(', ')})`).join('\n'):PX.senior.traits.map(t=>`${t.trait}: correlation with senior success ${t.r}`).join('\n')}`:''}\n\nCAREER STAGE: ${STAGE}\nKNOWN SKILLS: ${known.join(', ')||'none'}`;
+const SYS='You are a career analyst. Reply with JSON only, shaped {"profile":"one sentence about this person","study":[{"skill":"","why":"","signal":"","learn":["",""],"weeks":0,"achieve":""}],"outcome":"two sentences on what they achieve after finishing"}. Give exactly 5 study items, highest priority first. Choose skills from MARKET DATA or clearly implied by LATEST NEWS, and fit the resume level. "learn" is 3 to 5 concrete topics, tools or libraries to learn for that skill, 1 to 4 words each. "signal" must cite a specific headline or the posting count from MARKET DATA and name the common role. When DATASET EVIDENCE is given, cite it by dataset letter, for example "Dataset B: 3,100 postings". NEVER mention salary, LPA or pay unless MARKET DATA gives a number above 0 for that exact skill, and never write 0, 0.0 or 0 LPA anywhere. When salary is n/a, talk about the skills to learn and the role instead. "achieve" is a concrete result such as a project or a role. When PROMOTION EVIDENCE is present: for a junior, favour skills from the drivers with the highest hike importance relative to how often postings ask for them, keeping a baseline of coding; for a senior, include 2 items on work habits tied to conscientiousness and openness (planning, ownership, documentation, learning new methods) and put the habits in "learn". Call these patterns in small samples, never guarantees. No questions, no chat.';
+const ZERO=/\b0(?:\.0+)?\s*(?:[-\u2013]\s*\d+(?:\.\d+)?\s*)?(?:LPA|lakhs?)\b/i,noZero=t=>String(t??'').replace(new RegExp(ZERO.source,'gi'),'a competitive salary');
+function fixSignal(s){if(!ZERO.test(s.signal||''))return s.signal;const m=mk.next.find(x=>String(s.skill).toLowerCase().includes(x.skill.toLowerCase()));
+return m?`${m.n} job postings ask for ${m.skill}${m.role?', e.g. '+m.role:''}.`:'This skill keeps showing up in job data and the latest news.'}
+
+const showDrop=()=>{$('up').innerHTML='<label class="drop"><span>Drop your resume here<small>PDF or TXT. Or tap to browse.</small></span><input type="file" id="rin" accept=".pdf,.txt"></label>'};
+async function extractSkills(local){const map=new Map(vocab.map(x=>[x.toLowerCase(),x]));let ai=[],extra=[];
+try{const j=jx(await ask([{role:'system',content:'Reply JSON only: {"from_list":[],"other":[]}. from_list: skills from SKILL LIST (exact spelling) that the resume shows real evidence of, max 12. other: up to 8 further skills or technologies the resume shows that are not in the list. Never invent.'},{role:'user',content:'SKILL LIST: '+vocab.slice(0,250).join(', ')+'\n\nRESUME:\n'+resume.slice(0,4500)}],true));
+ai=(j.from_list||[]).map(x=>map.get(String(x).toLowerCase())).filter(Boolean);
+extra=(j.other||[]).map(x=>String(x).trim()).filter(x=>x&&x.length<30).map(x=>map.get(x.toLowerCase())||x)}catch{}
+return [...new Set([...local,...ai,...extra])].slice(0,16)}
+async function newsQuery(seed){let t=[];
+try{t=jx(await ask([{role:'system',content:'Reply JSON only: {"terms":["..."]} with 10 short phrases (1 to 3 words each) likely to appear in news HEADLINES about this person\'s field: their technologies, target job roles and industries, e.g. "AI hiring", "robotics startup", "Python". No personal names or school names.'},{role:'user',content:'SKILLS: '+seed.join(', ')+'\n\nRESUME:\n'+resume.slice(0,2500)}],true)).terms}catch{}
+t=(Array.isArray(t)?t:[]).map(x=>String(x).replace(/"/g,'').trim()).filter(x=>x&&x.length<40);
+terms=[...new Set(t.length?t:[...seed.slice(0,5),'tech hiring'])].slice(0,10)}
+const pkey=()=>RH?'plan|'+RH+'|'+STAGE+'|'+mid()+'|'+known.slice().sort().join(','):null;
+function fallbackPlan(){return{profile:'The AI did not answer, so this plan comes from job-market data only.',study:mk.next.slice(0,5).map(x=>({skill:x.skill,why:x.n+' job postings ask for '+x.skill+'.',signal:x.n+' job postings ask for '+x.skill+(x.role?', e.g. '+x.role:'')+'.',learn:[],weeks:4,achieve:'A small project that shows '+x.skill+' on your portfolio.'})),outcome:'Finish these and you cover the skills most requested in the job data.'}}
+async function run(force){mk=market();proc(3);const key=pkey();
+if(key&&force!==true){const c=cget(key);if(c&&Array.isArray(c.study)&&c.study.length){plan=c;showPlan();return}}
+const t0=Date.now(),lim=tmoOf(),pw=$('plan').querySelector('.proc');let wt=null;
+if(pw){wt=document.createElement('p');wt.className='hint';pw.appendChild(wt)}
+const wi=setInterval(()=>{if(wt)wt.textContent='Waiting for the AI: '+Math.round((Date.now()-t0)/1000)+'s (gives up after '+lim+'s per try)'},1000);
+try{let err;for(let t=0;t<2;t++){try{const j=jx(await ask([{role:'system',content:SYS},{role:'user',content:ctx()}],true));
+if(!j||!Array.isArray(j.study)||!j.study.length)throw new Error('The AI answered in an unexpected format');plan=j;err=null;break}
+catch(e){err=e;if(/No reply from/.test(e.message))break}}
+if(err)throw err;if(key)cset(key,plan);showPlan()}
+catch(e){stopTick();$('plan').innerHTML=`<div class="err">Could not build the plan: ${h(e.message||e)}. Check your AI provider in Admin.</div><div class="row"><button id="again">Try again</button>${mk.next.length?'<button id="offl">Show data-only plan</button>':''}</div>`;$('again').onclick=()=>run(true);
+if($('offl'))$('offl').onclick=()=>{plan=fallbackPlan();showPlan()}}
+finally{clearInterval(wi)}}
+function showPlan(){stopTick();
+$('plan').innerHTML=`<p style="font-weight:600;margin-bottom:16px">${h(noZero(plan.profile))}</p>${usedLine()}<div class="grid">`+
+(Array.isArray(plan.study)?plan.study:[]).map((s,i)=>`<article class="card" style="--i:${i}"><h2>${i+1}. ${h(s.skill)}<span class="badge">${h(s.weeks)} wks</span></h2><p>${h(noZero(s.why))}</p>${Array.isArray(s.learn)&&s.learn.length?`<p class="lh">Skills to learn</p><div class="learn">${s.learn.slice(0,5).map(x=>`<span>${h(x)}</span>`).join('')}</div>`:''}<p class="note">${h(fixSignal(s))}</p><p class="get"><b>You get:</b> ${h(noZero(s.achieve))}</p>${srcBox(s.skill)}</article>`).join('')+
+`</div><div class="win">What you achieve: ${h(noZero(plan.outcome))}</div><div class="row"><button class="pri" id="askb">Ask a question</button><button id="rerun">Re-run with latest news</button><button id="reset">Replace resume</button></div>`;
+$('askb').onclick=()=>{$('qa').textContent='';$('q').showModal()};$('rerun').onclick=async()=>{proc(2);await loadNews(true);run(true)};$('reset').onclick=reset}
+function reset(){stopTick();resume='';plan=null;terms=[];setKnown([]);showDrop();$('plan').innerHTML=IDLE;loadNews()}
+async function take(f){if(!f)return;
+try{proc(0);$('scan').hidden=false;
+resume=(await readFile(f)).trim();if(resume.length<40)throw new Error('No text found. Scanned PDFs have no text layer and this page does not do OCR');
+RH='';try{RH=await sha(await f.arrayBuffer())}catch{}plan=null;terms=[];$('up').innerHTML=`<p><b>${h(f.name)}</b>: ${resume.length} characters read in your browser with pdf.js. No AI is used for reading the file.</p>`;
+await fly($('up'),$('mapbox'),{html:PAPER,dur:1000,scale:[1.1,.3],rot:[-8,16]});pulse($('c-map'));
+proc(1);const local=match(),sKey=RH?'sk|'+RH+'|'+mid():null,hit=sKey&&cget(sKey);let sk;if(hit&&Array.isArray(hit.sk)){sk=hit.sk;terms=hit.terms||[]}else{[sk]=await Promise.all([extractSkills(local),newsQuery(local)]);if(sKey&&sk.length)cset(sKey,{sk,terms})}
+await flySkills(sk);popIn=true;setKnown(sk);$('scan').hidden=true;pulse($('c-map'));
+proc(2);await loadNews(true);
+run()}
+catch(e){stopTick();$('scan').hidden=true;showDrop();$('plan').innerHTML=`<div class="err">${h(e.message||e)}</div>`}}
+document.addEventListener('change',e=>{if(e.target.id=='rin')take(e.target.files[0])});
+['dragover','dragleave','drop'].forEach(v=>document.addEventListener(v,e=>{const d=e.target.closest&&e.target.closest('.drop');if(!d)return;
+e.preventDefault();d.classList.toggle('on',v=='dragover');if(v=='drop')take(e.dataTransfer.files[0])}));
+
+let FIT=null;const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function drawMap(){const el=$('map');if(SIM)SIM.stop();FIT=null;el.innerHTML='';if(!el.clientWidth)return;
+if(!csv.length){el.innerHTML='<p class="load">Job data not loaded yet.</p>';return}
+const INK=cv('--ink'),LINE=cv('--line'),SOFT=cv('--soft');
+const P=popIn&&!RM;popIn=false;const W=el.clientWidth,H=el.clientHeight;let nodes,links,mx=1;
+if(!known.length){const top=vocab.slice(0,16),ts=new Set(top);
+nodes=top.map((id,i)=>({id,o:1,n:16-i}));mx=16;
+links=csv.filter(r=>ts.has(r.known_skill)&&ts.has(r.study_next)).sort((a,b)=>b.connection_strength-a.connection_strength).slice(0,40).map(r=>({source:r.known_skill,target:r.study_next,s:+r.connection_strength}));
+$('mh').textContent='Market overview: the most asked-for skills and how they connect. Upload a resume to see yours.'}
+else{const t=mk.next.slice(0,20);mx=d3.max(t,x=>x.n)||1;
+nodes=[{id:'You',me:1},...known.map(id=>({id,k:1})),...t.map(x=>({id:x.skill,n:x.n,tip:`${x.skill}: ${x.n} postings${x.sal>0?', '+x.sal.toFixed(1)+' LPA':''}${x.role?', '+x.role:''}`}))];
+links=[...known.map(s=>({source:'You',target:s,s:.5})),...csv.filter(r=>known.includes(r.known_skill)&&t.some(x=>x.skill==r.study_next)).map(r=>({source:r.known_skill,target:r.study_next,s:+r.connection_strength}))];
+$('mh').textContent='Yellow is you, green is what you know, orange is what to study next. Thicker lines mean skills are often asked together. Double-click to fit the whole map.'}
+const svg=d3.select(el).append('svg'),g=svg.append('g'),zoom=d3.zoom().scaleExtent([.1,3]).on('zoom',e=>g.attr('transform',e.transform));
+svg.call(zoom).on('dblclick.zoom',null).on('dblclick',()=>FIT&&FIT(true));
+const l=g.selectAll('line').data(links).join('line').attr('stroke',INK).attr('stroke-opacity',d=>.2+d.s*.8).attr('stroke-width',d=>1+d.s*8);
+const n=g.selectAll('g').data(nodes).join('g'),r=d=>d.me?26:d.k?16:9+(d.o?10:20)*d.n/mx;
+n.append('circle').attr('r',r).attr('fill',d=>d.me?'#ffd84d':d.k?'#3ecfa4':d.o?'#8fd0ff':'#ff8a3d').attr('stroke',LINE).attr('stroke-width',3);
+n.append('text').text(d=>d.id).attr('x',d=>r(d)+6).attr('y',5).attr('fill',INK).attr('font-size',13).attr('font-weight',600).attr('stroke',SOFT).attr('stroke-width',4).attr('paint-order','stroke');
+n.append('title').text(d=>d.tip||d.id);
+const draw=()=>{l.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);n.attr('transform',d=>`translate(${d.x},${d.y})`)};
+const sim=SIM=d3.forceSimulation(nodes).force('l',d3.forceLink(links).id(d=>d.id).distance(105)).force('c',d3.forceManyBody().strength(-300)).force('m',d3.forceCenter(W/2,H/2)).force('x',d3.forceX(W/2).strength(.05)).force('y',d3.forceY(H/2).strength(.05)).force('o',d3.forceCollide(30)).stop();
+for(let i=0;i<300;i++)sim.tick();draw();
+FIT=anim=>{const W=el.clientWidth,H=el.clientHeight;if(!W||!H)return;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+nodes.forEach(d=>{const q=r(d);x0=Math.min(x0,d.x-q);x1=Math.max(x1,d.x+q+12+d.id.length*7.2);y0=Math.min(y0,d.y-q);y1=Math.max(y1,d.y+q)});
+const k=Math.min(1.6,(W-40)/(x1-x0),(H-40)/(y1-y0)),t=d3.zoomIdentity.translate(W/2-k*(x0+x1)/2,H/2-k*(y0+y1)/2).scale(k);
+(anim&&!RM?svg.transition().duration(500):svg).call(zoom.transform,t)};
+FIT();
+if(P){n.style('opacity',0).transition().delay((d,i)=>i*45).duration(450).style('opacity',1);
+n.select('circle').attr('r',0).transition().delay((d,i)=>i*45).duration(700).ease(d3.easeBackOut.overshoot(2.2)).attr('r',r);
+l.attr('stroke-opacity',0).transition().delay(500).duration(600).attr('stroke-opacity',d=>.2+d.s*.8)}
+sim.on('tick',draw);if(!RM)sim.alpha(.08).alphaTarget(.01).restart();
+n.call(d3.drag().on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)sim.alphaTarget(.01);d.fx=d.fy=null}))}
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>FIT&&FIT(),150)});
+new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>FIT&&FIT(),150)}).observe($('mapbox'));
+$('fit').onclick=()=>FIT&&FIT(true);
+
+$('qx').onclick=()=>$('q').close();
+$('qgo').onclick=async()=>{const q=$('qt').value.trim();if(!q)return;$('qa').textContent='Thinking...';
+try{$('qa').textContent=await ask([{role:'system',content:'You answer one career question about the study plan below. Be concrete and under 150 words. Plain text.'},{role:'user',content:ctx()+'\n\nPLAN:\n'+JSON.stringify(plan)+'\n\nQUESTION: '+q}],false)}
+catch(e){$('qa').textContent='Failed: '+(e.message||e)}};
+
+/* ---------- Routing + start ---------- */
+function route(){const a=location.hash=='#admin';$('v-studio').hidden=a;$('v-admin').hidden=!a;
+document.querySelectorAll('nav button[data-v]').forEach(b=>b.setAttribute('aria-current',(b.dataset.v=='admin')==a?'page':'false'));if(a)renderAdmin();else drawMap()}
+document.querySelector('nav').onclick=e=>{const b=e.target.closest('button');if(b)location.hash=b.dataset.v||'#'};
+addEventListener('hashchange',route);
+READY.then(()=>{loadPX();loadDS();$('plan').innerHTML=IDLE;clearNews();showDrop();setKnown([]);route();loadCsv();
+(function tick(){loadNews();setTimeout(tick,Math.max(1,CFG.news.refresh)*60000)})()});
+</script>
+</body>
+</html>
