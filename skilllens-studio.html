@@ -257,14 +257,21 @@ const net=(u,o={})=>PROXY&&/^https?:/.test(u)?fetch('/proxy',{method:'POST',sign
 async function why(r,n){let t='';try{t=await r.text();const j=JSON.parse(t),e=j.error;t=(typeof e=='string'?e:e?.message)||t;if(e?.metadata)t+=' '+JSON.stringify(e.metadata).slice(0,160)}catch{}return `${n} replied ${r.status}: ${String(t).slice(0,240)}`}
 
 /* ---------- AI provider ---------- */
+function aiText(raw){const t=String(raw).trim();
+try{const j=JSON.parse(t);return j.choices?.[0]?.message?.content??j.choices?.[0]?.text??j.message?.content??j.content?.[0]?.text??''}catch{}
+let out='',any=false;
+for(const ln of t.split(/\r?\n/)){let l=ln.trim();if(!l||l[0]==':'||/^(event|id|retry):/.test(l))continue;if(l.startsWith('data:'))l=l.slice(5).trim();if(l=='[DONE]')continue;
+try{const j=JSON.parse(l),c=j.choices?.[0];any=true;out+=c?.delta?.content??c?.message?.content??c?.text??j.message?.content??''}catch{}}
+if(!any)throw Object.assign(new Error('Unreadable reply from the AI provider: '+t.slice(0,100)),{status:502});
+return out}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms)),tmoOf=(C=CFG)=>+(C[C.active]||{}).timeout||150;
 async function ask(m,json,C=CFG){const k=C.active,p=C[k],tmo=tmoOf(C)*1000;let noJson=false,last;
 for(let a=0;a<3;a++){const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),tmo);
 try{let out;
 if(k=='ollama'){const r=await net(p.url.replace(/\/$/,'')+'/api/chat',{method:'POST',signal:ac.signal,body:JSON.stringify({model:p.model,stream:false,format:json&&!noJson?'json':undefined,options:{num_ctx:+p.ctx,temperature:.3,num_predict:json?3000:1500},messages:m})});
-if(!r.ok){const e=new Error(await why(r,'Ollama'));e.status=r.status;throw e}out=(await r.json()).message?.content}
-else{const r=await net(p.url.replace(/\/$/,'')+'/chat/completions',{method:'POST',signal:ac.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+p.key},body:JSON.stringify({model:p.model,messages:m,temperature:.3,max_tokens:3000,...(json&&!noJson&&{response_format:{type:'json_object'}})})});
-if(!r.ok){const e=new Error(await why(r,p.name||TITLES[k]));e.status=r.status;throw e}out=(await r.json()).choices?.[0]?.message?.content}
+if(!r.ok){const e=new Error(await why(r,'Ollama'));e.status=r.status;throw e}out=aiText(await r.text())}
+else{const r=await net(p.url.replace(/\/$/,'')+'/chat/completions',{method:'POST',signal:ac.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+p.key},body:JSON.stringify({model:p.model,messages:m,stream:false,temperature:.3,max_tokens:3000,...(json&&!noJson&&{response_format:{type:'json_object'}})})});
+if(!r.ok){const e=new Error(await why(r,p.name||TITLES[k]));e.status=r.status;throw e}out=aiText(await r.text())}
 out=String(out??'').replace(/<think>[\s\S]*?<\/think>/gi,'').trim();
 if(!out)throw Object.assign(new Error('The model sent an empty reply'),{status:500});
 return out}
